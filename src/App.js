@@ -9,14 +9,24 @@ import Results from './components/Results'
 
 function App() {
   return (
-    <div>
+    <AppContainer>
       <Nav />
       <Search />
       <Results />
       <Filter />
       <Player />
-    </div>
+    </AppContainer>
   );
 }
 
 export default App;
+
+const AppContainer = Styled.div`
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: flex-start;
+  justify-content: center;
+  background-image: linear-gradient(-30deg, #12262d, #4baa67);
+  background-attachment: fixed;
+`
