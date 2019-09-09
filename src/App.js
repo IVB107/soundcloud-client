@@ -7,6 +7,10 @@ import Player from './components/Player'
 import Filter from './components/Filter'
 import TrackList from './components/TrackList'
 
+// Info on getting related tracks from SoundCloud API: 
+// https://stackoverflow.com/questions/29459145/get-list-of-related-tracks-http-api-soundcloud
+
+
 function App() {
   return (
     <AppContainer>
@@ -14,9 +18,11 @@ function App() {
       <h1>Discover new music, instantly.</h1>
       {/* <h2>Search by artist</h2> */}
       <Search />
-      <TrackList />
-      <Filter />
-      <Player />
+      <ResultsContainer >
+        <TrackList />
+        <Filter />
+      </ResultsContainer>
+        <Player />
     </AppContainer>
   );
 }
@@ -34,7 +40,6 @@ const AppContainer = Styled.div`
   background-attachment: fixed;
 
   h1 {
-    width: 100%;
     align-self: flex-start;
     margin: 3rem 0 0;
     padding: 0 20px;
@@ -48,4 +53,12 @@ const AppContainer = Styled.div`
     padding: 0 20px;
     margin: 0;
   } */
+`
+
+const ResultsContainer = Styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: nowrap;
 `

@@ -3,7 +3,7 @@ import Styled from 'styled-components'
 
 const TrackList = () => {
   return (
-    <TrackContainer>
+    <TrackListContainer>
       <ListHeader>
         <h2>Tracklist</h2>
         <div>
@@ -19,13 +19,16 @@ const TrackList = () => {
           <button>TEMPO</button>
         </div>
       </ListHeader>
-    </TrackContainer>
+      <Tracks>
+        {/* Map over returned tracks array and render <Track /> component for each */}
+      </Tracks>
+    </TrackListContainer>
   )
 }
 
 export default TrackList
 
-const TrackContainer = Styled.div`
+const TrackListContainer = Styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -72,6 +75,14 @@ const ListHeader = Styled.div`
       color: white;
       margin: 0 0 0 10px;
       padding: 4px 6px;
+      cursor: pointer;
     }
   }
+`
+
+const Tracks = Styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 `
