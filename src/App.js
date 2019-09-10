@@ -7,10 +7,6 @@ import Player from './components/Player'
 import Filter from './components/Filter'
 import TrackList from './components/TrackList'
 
-// Info on getting related tracks from SoundCloud API: 
-// https://stackoverflow.com/questions/29459145/get-list-of-related-tracks-http-api-soundcloud
-
-
 function App() {
   return (
     <AppContainer>
