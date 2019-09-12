@@ -5,7 +5,7 @@ const Nav = () => {
   return (
     <NavContainer>
       <NavLeft><p>FoundCloud</p></NavLeft>
-      <NavRight><p>Connect with SoundCloud</p></NavRight>
+      <NavRight><a href="http://localhost:8888"><button>Connect with Spotify</button></a></NavRight>
     </NavContainer>
   )
 }
@@ -40,12 +40,14 @@ const NavLeft = Styled.div`
 const NavRight = Styled.div`
   justify-content: flex-end;
 
-  p {
+  button {
     padding: 10px;
     background-color: #eaf1f7;
     font-size: .8rem;
     margin: 0 20px;
     border-radius: 30px;
+    border: none;
     box-shadow: 0 0 6px rgb(60, 60, 60);
+    cursor: pointer;
   }
 `
