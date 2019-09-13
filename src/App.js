@@ -14,7 +14,6 @@ function App() {
       <AuthContextProvider >
         <Nav />
         <h1>Discover new music, instantly.</h1>
-        {/* <h2>Search by artist</h2> */}
         <Search />
           
         <ResultsContainer >
@@ -46,13 +45,6 @@ const AppContainer = Styled.div`
     font-size: 2rem;
     color: #eaf1f7;
   }
-
-  /* h2 {
-    width: 100%;
-    align-self: flex-start;
-    padding: 0 20px;
-    margin: 0;
-  } */
 `
 
 const ResultsContainer = Styled.div`

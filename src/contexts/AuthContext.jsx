@@ -1,20 +1,19 @@
-import React, { createContext, Component } from 'react'
+import React, { createContext, useReducer } from 'react'
+import { authReducer } from '../reducers/authReducer'
 
 export const AuthContext = createContext()
 
-class AuthContextProvider extends Component {
-  state = {
+const AuthContextProvider = (props) => {
+  const [auth, dispatch] = useReducer(authReducer, {
     isAuthenticated: false,
-    username: '',
-  }
-
-  render() {
-    return (
-      <AuthContext.Provider value={{...this.state}}>
-        {this.props.children}
-      </AuthContext.Provider>
-    )
-  }
+    username: null
+  })
+  return (
+    <AuthContext.Provider value={{auth, dispatch}}>
+      {props.children}
+    </AuthContext.Provider>
+  )
 }
+
 
 export default AuthContextProvider
