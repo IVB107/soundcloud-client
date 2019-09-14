@@ -8,21 +8,21 @@ import Filter from './components/Filter'
 import TrackList from './components/TrackList'
 import AuthContextProvider from './contexts/AuthContext'
 
-function App() {
+const App = () => {
+
   return (
-    <AppContainer>
-      <AuthContextProvider >
+    <AuthContextProvider >
+      <AppContainer>
         <Nav />
         <h1>Discover new music, instantly.</h1>
         <Search />
-          
         <ResultsContainer >
           <TrackList />
           <Filter />
         </ResultsContainer>
           <Player />
-      </AuthContextProvider>
-    </AppContainer>
+      </AppContainer>
+    </AuthContextProvider>
   );
 }
 

@@ -11,6 +11,6 @@ export const authReducer = (state, action) => {
         username: null
       }
     default:
-      return 'Authentication Error'
+      return state
   }
 }
