@@ -3,7 +3,8 @@ export const authReducer = (state, action) => {
     case 'LOG_IN':
       return {
         isAuthenticated: true,
-        username: action.username
+        username: action.username,
+        user: action.user
       }
     case 'LOG_OUT':
       return {
