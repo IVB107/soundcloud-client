@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styled from 'styled-components'
 import SearchResult from './SearchResult'
 
 const Search = () => {
+  const [keyword, setKeyword] = useState('')
+
   return (
     <SearchContainer>
       <form>
-        <input type="text" placeholder="Search by artist"/>
+        <input type="text" value={keyword} onChange={e => setKeyword(e.target.value)} placeholder="Search by artist"/>
         <div>
-        <p>Artist</p>
-        <p>|</p>
-        <p>Track</p>
+          <p>{keyword}</p>
+          <p>Artist</p>
+          <p>|</p>
+          <p>Track</p>
         </div>
       </form>
       <ResultsContainer >
