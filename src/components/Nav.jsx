@@ -25,7 +25,8 @@ const Nav = () => {
   })
 
   const getUser = async () => {
-    await spotifyApi.getMe().then((response) => {
+    await spotifyApi.getMe()
+    .then((response) => {
       console.log('getUser() Response: ', response)
       dispatch({
         type: 'LOG_IN',
@@ -33,6 +34,9 @@ const Nav = () => {
         username: response.display_name,
         user: response
       })
+    })
+    .catch(err => {
+      console.log('ERROR: ', err)
     })
   }
   

@@ -1,14 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer, useEffect } from 'react'
 import Styled from 'styled-components'
-import SearchResult from './SearchResult'
+import Spotify from 'spotify-web-api-js'
 
-const Search = () => {
+import SearchResult from './SearchResult'
+import { searchReducer } from '../reducers/searchReducer'
+
+const spotifyApi = new Spotify()
+
+const SearchBar = () => {
   const [keyword, setKeyword] = useState('')
+
+  const [search, dispatch] = useReducer(searchReducer, {
+    searchType: ['artist'],
+    input: '',
+    results: []
+  })
+
+  const inputSearch = async (input) => {
+    // Pass search string to state to update input value first
+    dispatch({
+      type: 'ON_CHANGE',
+      searchType: search.searchType,
+      input: input,
+      results: []
+    })
+    if (input !== ''){
+      console.log('Searching...')
+      await spotifyApi.search(input, search.searchType)
+        .then(response => {
+          console.log('Input Search Results: ', response)
+          dispatch({
+            type: 'ON_CHANGE',
+            searchType: search.searchType,
+            input: input,
+            results: response.artists.items.splice(0, 5)
+          })
+        })
+        .catch(err => {
+          console.log('ERROR: ', err)
+        })
+    }
+  }
+
+  useEffect(() => {
+    console.log('RESULTS: ', search.results)
+  })
 
   return (
     <SearchContainer>
       <form>
-        <input type="text" value={keyword} onChange={e => setKeyword(e.target.value)} placeholder="Search by artist"/>
+      <input type="text" value={search.input} onChange={e => inputSearch(e.target.value)} placeholder="Search by artist"/>
+        {/* <input type="text" value={keyword} onChange={e => setKeyword(e.target.value)} placeholder="Search by artist"/> */}
         <div>
           <p>{keyword}</p>
           <p>Artist</p>
@@ -24,7 +66,7 @@ const Search = () => {
   )
 }
 
-export default Search
+export default SearchBar
 
 const SearchContainer = Styled.div`
   display: flex;
