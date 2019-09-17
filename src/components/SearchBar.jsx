@@ -42,20 +42,42 @@ const SearchBar = () => {
     }
   }
 
+  const searchType = type => {
+    if (search.searchType[0] !== type){
+      console.log('switching search type...')
+      dispatch({
+        type: 'SWITCH_TYPE',
+        searchType: [type],
+        input: search.input,
+        results: search.results
+      })
+    }
+  }
+
   useEffect(() => {
     console.log('RESULTS: ', search.results)
+    console.log('Search Type: ', search.searchType)
   })
 
   return (
     <SearchContainer>
       <form>
-      <input type="text" value={search.input} onChange={e => inputSearch(e.target.value)} placeholder="Search by artist"/>
+      <input type="text" value={search.input} onChange={e => inputSearch(e.target.value)} placeholder={`Search by ${search.searchType[0]}`}/>
         {/* <input type="text" value={keyword} onChange={e => setKeyword(e.target.value)} placeholder="Search by artist"/> */}
         <div>
-          <p>{keyword}</p>
-          <p>Artist</p>
+          <SearchType 
+            style={search.searchType[0] === 'artist' ? {color: `#eaf1f7`} : null} 
+            onClick={() => searchType('artist')}
+          >
+            Artist
+          </SearchType>
           <p>|</p>
-          <p>Track</p>
+          <SearchType 
+            style={search.searchType[0] === 'track' ? {color: `#eaf1f7`} : null}
+            onClick={() => searchType('track')}
+          >
+            Track
+          </SearchType>
         </div>
       </form>
       <ResultsContainer >
@@ -112,6 +134,11 @@ const SearchContainer = Styled.div`
       }
     }
   }
+`
+
+const SearchType = Styled.p`
+  cursor: pointer;
+  /* color: #eaf1f7;  */
 `
 
 const ResultsContainer = Styled.div`

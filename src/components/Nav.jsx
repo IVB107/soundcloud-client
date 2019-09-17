@@ -63,7 +63,14 @@ const Nav = () => {
           </div>
         </UserInfo>
       }
-      <NavRight><a href="http://localhost:8888"><button>Connect with Spotify</button></a></NavRight>
+      <NavRight>
+        {auth.isAuthenticated ? (
+          // ----- MISSING 'LOGOUT' LINK -----
+          <a href="http://localhost:8888"><button>Log Out</button></a>
+        ) : (
+          <a href="http://localhost:8888"><button>Connect with Spotify</button></a>
+        )}
+      </NavRight>
     </NavContainer>
   )
 }

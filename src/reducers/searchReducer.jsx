@@ -8,13 +8,13 @@ export const searchReducer = (state, action) => {
       }
     case 'SWITCH_TYPE':
       return {
-        // isAuthenticated: false,
-        // username: null
+        searchType: action.searchType,
+        input: action.input,
+        results: action.results
       }
     case 'SUBMIT_SEARCH':
       return {
-        // isAuthenticated: false,
-        // username: null
+        // something...
       }
     default:
       return state

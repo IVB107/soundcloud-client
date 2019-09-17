@@ -1,0 +1,32 @@
+TODO Items:
+
+General:
+[] Hmmm...
+
+
+----- Components -----
+
+Filter.jsx:
+
+Nav.jsx:
+[] Provide 'logout' url for Log Out nav button
+
+Player.jsx:
+
+SearchBar.jsx:
+[] Add dynamic dropdown showing returned search result options
+[x] Add functionality to toggle between 'Artist' & 'Track' search
+
+SearchResult.jsx:
+[] Update styling?
+
+Track.jsx:
+
+TrackList.jsx:
+
+
+----- Reducers -----
+
+
+----- Contexts -----
+
