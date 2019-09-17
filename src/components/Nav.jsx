@@ -23,15 +23,14 @@ const Nav = () => {
     username: null,
     user: null
   })
-  let user = {}
+
   const getUser = async () => {
     await spotifyApi.getMe().then((response) => {
-      user = response
-      console.log('User: ', user)
+      console.log('getUser() Response: ', response)
       dispatch({
         type: 'LOG_IN',
         isAuthenticated: true, 
-        username: user.display_name,
+        username: response.display_name,
         user: response
       })
     })
@@ -44,7 +43,7 @@ const Nav = () => {
       getUser()
     }
     console.log('AUTH: ', auth)
-  }, [auth])
+  })
 
   return (
     <NavContainer>
