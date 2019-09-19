@@ -84,15 +84,17 @@ const SearchBar = () => {
         </div>
       </form>
       <ResultOptions>
-        { search.results.length > 0 && (
+        {search.results.length > 0 && (
           search.results.map(item => (
             <li>
-              <img src={search.searchType[0] === 'artist' ? item.images[0].url : item.album.images[0].url} alt={item.name} />
+              {search.searchType[0] === 'artist'
+                ? <img src={item.images.length > 0 ? item.images[0].url : 'https://image.flaticon.com/icons/png/128/122/122320.png'} alt={item.name} />
+                : <img src={item.album.images.length > 0 ? item.album.images[0].url : 'https://image.flaticon.com/icons/png/128/122/122320.png'} alt={item.name} />
+              }
               <p>{item.name}</p>
             </li>
           ))
-        )
-        }
+        )}
       </ResultOptions>
       <ResultsContainer >
         {/* Map over selected artists & render <SearchResult /> for each */}
@@ -171,13 +173,21 @@ const ResultOptions = Styled.ul`
 
   li {
     height: 36px;
-    background-color: rgba(18, 38, 45);
+    background-color: #12262d;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     margin: none;
     padding: 0 10px;
     list-style-type: none;
+
+    :hover {
+      background-color: #e4f489;
+
+      p {
+        color: #12262d;
+      }
+    }
 
     img, p {
       padding: 0 10px;

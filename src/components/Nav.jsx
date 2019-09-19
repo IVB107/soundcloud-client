@@ -100,7 +100,8 @@ const NavLeft = Styled.div`
     padding: 0 20px;
     font-weight: 900;
     font-size: 2rem;
-    color: #ead441;
+    /* color: #ead441; */
+    color: #e4f489;
   }
 `
 const NavRight = Styled.div`
