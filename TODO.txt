@@ -14,7 +14,7 @@ Nav.jsx:
 Player.jsx:
 
 SearchBar.jsx:
-[] Add dynamic dropdown showing returned search result options
+[x] Add dynamic dropdown showing returned search result options
 [x] Add functionality to toggle between 'Artist' & 'Track' search
 [] Add onSubmit handler to create new <SearchResult />
 [] Add default image for artists/tracks without one
