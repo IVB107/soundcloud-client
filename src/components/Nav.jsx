@@ -1,9 +1,8 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useEffect, useReducer, useContext } from 'react'
 import Styled from 'styled-components'
 import Spotify from 'spotify-web-api-js'
 
-// import { AuthContext } from '../contexts/AuthContext'
-import { authReducer } from '../reducers/authReducer'
+import { AuthContext } from '../contexts/AuthContext'
 
 const spotifyApi = new Spotify()
 // getHashParams() taken from /server/authorization_code/public/index.html
@@ -18,11 +17,7 @@ const getHashParams = () => {
 }
 
 const Nav = () => {
-  const [auth, dispatch] = useReducer(authReducer, {
-    isAuthenticated: false,
-    username: null,
-    user: null
-  })
+  const { auth, dispatch } = useContext(AuthContext)
 
   const getUser = async () => {
     await spotifyApi.getMe()
@@ -93,6 +88,7 @@ const NavContainer = Styled.div`
     align-items: center;
   }
 `
+
 const NavLeft = Styled.div`
   justify-content: flex-start;
 
@@ -104,6 +100,7 @@ const NavLeft = Styled.div`
     color: #e4f489;
   }
 `
+
 const NavRight = Styled.div`
   justify-content: flex-end;
 

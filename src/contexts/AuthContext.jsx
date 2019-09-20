@@ -7,7 +7,8 @@ const AuthContextProvider = (props) => {
   // Set initial authentication state
   const [auth, dispatch] = useReducer(authReducer, {
     isAuthenticated: false,
-    username: null
+    username: null,
+    user: null
   })
   return (
     <AuthContext.Provider value={{auth, dispatch}}>

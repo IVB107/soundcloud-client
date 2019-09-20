@@ -6,6 +6,8 @@ import { SearchContext } from '../contexts/SearchContext'
 
 const ResultDropdown = () => {
   const { search, dispatch } = useContext(SearchContext)
+
+  
   return (
     <ResultOptions>
       {search.results.length > 0 && (

@@ -1,10 +1,8 @@
 import React, { useEffect, useContext } from 'react'
 import Styled from 'styled-components'
 import Spotify from 'spotify-web-api-js'
-import uuid from 'uuid'
 
 import SearchResult from './SearchResult'
-// import { searchReducer } from '../reducers/searchReducer'
 import ResultDropdown from './ResultDropdown'
 import { SearchContext } from '../contexts/SearchContext'
 
