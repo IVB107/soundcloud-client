@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import Styled from 'styled-components'
 import Spotify from 'spotify-web-api-js'
 
@@ -21,18 +21,18 @@ const Nav = () => {
 
   const getUser = async () => {
     await spotifyApi.getMe()
-    .then((response) => {
-      console.log('getUser() Response: ', response)
-      dispatch({
-        type: 'LOG_IN',
-        isAuthenticated: true, 
-        username: response.display_name,
-        user: response
+      .then((response) => {
+        console.log('getUser() Response: ', response)
+        dispatch({
+          type: 'LOG_IN',
+          isAuthenticated: true, 
+          username: response.display_name,
+          user: response
+        })
       })
-    })
-    .catch(err => {
-      console.log('ERROR: ', err)
-    })
+      .catch(err => {
+        console.log('ERROR: ', err)
+      })
   }
   
   useEffect(() => {

@@ -8,7 +8,8 @@ const SearchContextProvider = (props) => {
   const [search, dispatch] = useReducer(searchReducer, {
     searchType: ['artist'],
     input: '',
-    results: []
+    results: [],
+    selected: []
   })
   return (
     <SearchContext.Provider value={{search, dispatch}}>

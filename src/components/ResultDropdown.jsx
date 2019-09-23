@@ -7,12 +7,23 @@ import { SearchContext } from '../contexts/SearchContext'
 const ResultDropdown = () => {
   const { search, dispatch } = useContext(SearchContext)
 
-  
+  const handleSelectItem = (item) => {
+    // Do some stuff
+    console.log('Selected: ', item)
+    dispatch({
+      type: 'MAKE_SELECTION',
+      searchType: search.searchType,
+      input: '',
+      results: [],
+      selected: [...search.selected, item]
+    })
+  }
+
   return (
     <ResultOptions>
       {search.results.length > 0 && (
         search.results.map(item => (
-          <li key={uuid()}>
+          <li key={uuid()} onClick={() => handleSelectItem(item)}>
             {search.searchType[0] === 'artist'
               ? <img src={item.images.length > 0 ? item.images[0].url : 'https://image.flaticon.com/icons/png/128/122/122320.png'} alt={item.name} />
               : <img src={item.album.images.length > 0 ? item.album.images[0].url : 'https://image.flaticon.com/icons/png/128/122/122320.png'} alt={item.name} />

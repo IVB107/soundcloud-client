@@ -17,7 +17,8 @@ const SearchBar = () => {
       type: 'ON_CHANGE',
       searchType: search.searchType,
       input: input,
-      results: []
+      results: [],
+      selected: search.selected
     })
     if (input !== ''){
       await spotifyApi.search(input, search.searchType)
@@ -26,8 +27,9 @@ const SearchBar = () => {
           dispatch({
             type: 'ON_CHANGE',
             searchType: search.searchType,
-            input: input,
-            results: search.searchType[0] === 'artist' ? response.artists.items.splice(0, 5) : response.tracks.items.splice(0, 5)
+            input, 
+            results: search.searchType[0] === 'artist' ? response.artists.items.splice(0, 5) : response.tracks.items.splice(0, 5),
+            selected: search.selected
           })
         })
         .catch(err => {
@@ -43,7 +45,8 @@ const SearchBar = () => {
         type: 'SWITCH_TYPE',
         searchType: [type],
         input: '',
-        results: []
+        results: [],
+        selected: []
       })
     }
   }
@@ -51,6 +54,7 @@ const SearchBar = () => {
   useEffect(() => {
     // console.log('RESULTS: ', search.results)
     // console.log('Search Type: ', search.searchType)
+    console.log('Render Selections: ', search.selected)
   })
 
   return (
@@ -81,6 +85,7 @@ const SearchBar = () => {
       <ResultDropdown />
       <ResultsContainer >
         {/* Map over selected artists & render <SearchResult /> for each */}
+        {/* Refactor into separate component...? */}
         <SearchResult />
       </ResultsContainer>
     </SearchContainer>
@@ -107,7 +112,6 @@ const SearchContainer = Styled.div`
       flex-grow: 1;
       border: none;
       background: none;
-      /* padding: 20px 0 6px; */
       padding: 6px 0;
       font-size: 1.4rem;
       color: #eaf1f7;

@@ -4,15 +4,24 @@ export const searchReducer = (state, action) => {
       return {
         searchType: action.searchType,
         input: action.input,
-        results: action.results
+        results: action.results,
+        selected: action.selected
       }
     case 'SWITCH_TYPE':
       return {
         searchType: action.searchType,
         input: action.input,
-        results: action.results
+        results: action.results,
+        selected: action.selected
       }
-    case 'SUBMIT_SEARCH':
+    case 'MAKE_SELECTION':
+      return {
+        searchType: action.searchType,
+        input: action.input,
+        results: action.results,
+        selected: action.selected
+      }
+    case 'REMOVE_SELECTION':
       return {
         // something...
       }
