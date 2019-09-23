@@ -5,6 +5,7 @@ import Spotify from 'spotify-web-api-js'
 import ResultDropdown from './ResultDropdown'
 import { SearchContext } from '../contexts/SearchContext'
 import SelectedItem from './SelectedItem'
+import SelectionContainer from './SelectionContainer'
 
 const spotifyApi = new Spotify()
 
@@ -83,11 +84,7 @@ const SearchBar = () => {
         </div>
       </form>
       <ResultDropdown />
-      <SelectionContainer >
-        {/* Map over selected artists & render <SearchResult /> for each */}
-        {/* Refactor into separate component...? */}
-        <SelectedItem />
-      </SelectionContainer>
+      <SelectionContainer />
     </SearchContainer>
   )
 }
@@ -142,11 +139,11 @@ const SearchType = Styled.p`
   /* color: #eaf1f7;  */
 `
 
-const SelectionContainer = Styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin: 0 20px;
-  padding: .5rem 0;
-  min-height: 3rem;
-`
+// const SelectionContainer = Styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-start;
+//   margin: 0 20px;
+//   padding: .5rem 0;
+//   min-height: 3rem;
+// `

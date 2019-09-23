@@ -39,7 +39,6 @@ const ResultDropdown = () => {
 export default ResultDropdown
 
 const ResultOptions = Styled.ul`
-  height: 20px;
   /* width: 100%; */
   padding: 0;
   margin: 0 20px;

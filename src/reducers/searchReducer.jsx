@@ -23,7 +23,10 @@ export const searchReducer = (state, action) => {
       }
     case 'REMOVE_SELECTION':
       return {
-        // something...
+        searchType: action.searchType,
+        input: action.input,
+        results: action.results,
+        selected: action.selected
       }
     default:
       return state

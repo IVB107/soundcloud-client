@@ -1,16 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Styled from 'styled-components'
+
+import { SearchContext } from '../contexts/SearchContext'
 
 // This component to render info for each artist the user selects from the search bar
 
-const SelectedItem = () => {
+const SelectedItem = ({ item }) => {
+  const { search, dispatch } = useContext(SearchContext)
+  const handleRemoveItem = () => {
+    console.log('Removing selected item...')
+    dispatch({
+      type: 'REMOVE_SELECTION',
+      searchType: search.searchType,
+      input: search.input,
+      results: search.results,
+      selected: search.selected.filer(selection => selection.key !== item.key)
+    })
+  }
+
   return (
     <Container>
       <ImageContainer>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP0Kt2J7lc0rumWO320S_9h8KdeABVlqY1dqgeusO7OJoCrJiI" alt=""/>
+        <img src={item.images[0].url} alt={item.name}/>
+        {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP0Kt2J7lc0rumWO320S_9h8KdeABVlqY1dqgeusO7OJoCrJiI" alt=""/> */}
       </ImageContainer>
-      <p>Artist Name</p>
-      <button>X</button>
+      <p>{item.name}</p>
+      <button onClick={handleRemoveItem}>X</button>
     </Container>
   )
 }
@@ -41,7 +56,6 @@ const Container = Styled.div`
     font-weight: 700;
     cursor: pointer;
   }
-
 `
 
 const ImageContainer = Styled.div`
