@@ -2,9 +2,9 @@ import React, { useEffect, useContext } from 'react'
 import Styled from 'styled-components'
 import Spotify from 'spotify-web-api-js'
 
-import SearchResult from './SearchResult'
 import ResultDropdown from './ResultDropdown'
 import { SearchContext } from '../contexts/SearchContext'
+import SelectedItem from './SelectedItem'
 
 const spotifyApi = new Spotify()
 
@@ -83,11 +83,11 @@ const SearchBar = () => {
         </div>
       </form>
       <ResultDropdown />
-      <ResultsContainer >
+      <SelectionContainer >
         {/* Map over selected artists & render <SearchResult /> for each */}
         {/* Refactor into separate component...? */}
-        <SearchResult />
-      </ResultsContainer>
+        <SelectedItem />
+      </SelectionContainer>
     </SearchContainer>
   )
 }
@@ -107,12 +107,13 @@ const SearchContainer = Styled.div`
     align-items: center;
     border-bottom: 1px solid #eaf1f7;
     margin: 0 20px;
+    height: 2.4rem;
 
     input {
       flex-grow: 1;
       border: none;
       background: none;
-      padding: 6px 0;
+      padding: 0;
       font-size: 1.4rem;
       color: #eaf1f7;
       height: 1.4rem;
@@ -141,7 +142,7 @@ const SearchType = Styled.p`
   /* color: #eaf1f7;  */
 `
 
-const ResultsContainer = Styled.div`
+const SelectionContainer = Styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;

@@ -3,21 +3,21 @@ import Styled from 'styled-components'
 
 // This component to render info for each artist the user selects from the search bar
 
-const SearchResult = () => {
+const SelectedItem = () => {
   return (
-    <ResultContainer>
+    <Container>
       <ImageContainer>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP0Kt2J7lc0rumWO320S_9h8KdeABVlqY1dqgeusO7OJoCrJiI" alt=""/>
       </ImageContainer>
       <p>Artist Name</p>
       <button>X</button>
-    </ResultContainer>
+    </Container>
   )
 }
 
-export default SearchResult
+export default SelectedItem
 
-const ResultContainer = Styled.div`
+const Container = Styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
