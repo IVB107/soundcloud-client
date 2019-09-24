@@ -38,6 +38,7 @@ const Container = Styled.div`
   justify-content: space-between;
   height: 3rem;
   width: 200px;
+  margin-right: 10px;
   padding: 4px;
   border-radius: 30px;
   background-color: rgba(234, 241, 247, .3);

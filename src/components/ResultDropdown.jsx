@@ -39,11 +39,12 @@ const ResultDropdown = () => {
 export default ResultDropdown
 
 const ResultOptions = Styled.ul`
-  /* width: 100%; */
+  width: 100%;
   padding: 0;
-  margin: 0 20px;
+  margin: 0;
   z-index: 10;
   list-style-type: none;
+  position: absolute;
 
   li {
     height: 36px;
@@ -55,6 +56,7 @@ const ResultOptions = Styled.ul`
     padding: 0 10px;
     list-style-type: none;
     cursor: pointer;
+    z-index: 10;
 
     :hover {
       background-color: #e4f489;

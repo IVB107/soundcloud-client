@@ -83,8 +83,10 @@ const SearchBar = () => {
           </SearchType>
         </div>
       </form>
-      <ResultDropdown />
-      <SelectionContainer />
+      <Results>
+        <ResultDropdown />
+        <SelectionContainer />
+      </Results>
     </SearchContainer>
   )
 }
@@ -113,7 +115,7 @@ const SearchContainer = Styled.div`
       padding: 0;
       font-size: 1.4rem;
       color: #eaf1f7;
-      height: 1.4rem;
+      height: 1.6rem;
     }
 
     input::placeholder {
@@ -139,11 +141,7 @@ const SearchType = Styled.p`
   /* color: #eaf1f7;  */
 `
 
-// const SelectionContainer = Styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-start;
-//   margin: 0 20px;
-//   padding: .5rem 0;
-//   min-height: 3rem;
-// `
+const Results = Styled.div`
+  position: relative;
+  margin: 0 20px;
+`

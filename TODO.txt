@@ -16,11 +16,11 @@ Player.jsx:
 SearchBar.jsx:
 [x] Add dynamic dropdown showing returned search result options
 [x] Add functionality to toggle between 'Artist' & 'Track' search
-[] Add onSubmit handler to create new <SearchResult />
+[x] Add onSubmit handler to create new <SearchResult />
 [] Add default image for artists/tracks without one
 
 SearchResult.jsx:
-[] Update styling?
+[x] Fix dropdown to lay on top of Tracklist instead of pushing all elements down on page
 
 Track.jsx:
 
