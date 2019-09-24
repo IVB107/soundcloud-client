@@ -14,7 +14,7 @@ const SelectedItem = ({ item }) => {
       searchType: search.searchType,
       input: search.input,
       results: search.results,
-      selected: search.selected.filer(selection => selection.key !== item.key)
+      selected: search.selected.filter(selection => selection.name !== item.name)
     })
   }
 
@@ -47,6 +47,7 @@ const Container = Styled.div`
   p {
     color: #eaf1f7;
     font-weight: 700;
+    text-align: center;
   }
 
   button {

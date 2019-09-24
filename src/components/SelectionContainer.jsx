@@ -26,7 +26,7 @@ const Container = Styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 0 20px;
+  margin: 0;
   padding: .5rem 0;
   min-height: 3rem;
 `

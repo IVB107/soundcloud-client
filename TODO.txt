@@ -1,7 +1,7 @@
 TODO Items:
 
 General:
-[] Hmmm...
+[] Prevent double-selection of Artists/Tracks
 
 
 ----- Components -----
