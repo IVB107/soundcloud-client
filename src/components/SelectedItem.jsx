@@ -4,9 +4,9 @@ import Styled from 'styled-components'
 import { SearchContext } from '../contexts/SearchContext'
 
 // This component to render info for each artist the user selects from the search bar
-
 const SelectedItem = ({ item }) => {
   const { search, dispatch } = useContext(SearchContext)
+
   const handleRemoveItem = () => {
     console.log('Removing selected item...')
     dispatch({
@@ -21,8 +21,8 @@ const SelectedItem = ({ item }) => {
   return (
     <Container>
       <ImageContainer>
+        {/* TODO: Add default image for Artists/Tracks without one */}
         <img src={item.images[0].url} alt={item.name}/>
-        {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP0Kt2J7lc0rumWO320S_9h8KdeABVlqY1dqgeusO7OJoCrJiI" alt=""/> */}
       </ImageContainer>
       <p>{item.name}</p>
       <button onClick={handleRemoveItem}>X</button>

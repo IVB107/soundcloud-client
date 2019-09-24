@@ -65,7 +65,8 @@ const SearchBar = () => {
           type="text" 
           value={search.input} 
           onChange={e => inputSearch(e.target.value)} 
-          placeholder={`Search by ${search.searchType[0]}`}
+          placeholder={search.selected.length < 5 ? `Search by ${search.searchType[0]}` : `Maximum number of ${search.searchType[0]}s reached`}
+          disabled={search.selected.length < 5 ? false : true}
         />
         <div>
           <SearchType 

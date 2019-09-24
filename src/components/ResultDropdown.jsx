@@ -8,15 +8,16 @@ const ResultDropdown = () => {
   const { search, dispatch } = useContext(SearchContext)
 
   const handleSelectItem = (item) => {
-    // Do some stuff
-    console.log('Selected: ', item)
-    dispatch({
-      type: 'MAKE_SELECTION',
-      searchType: search.searchType,
-      input: '',
-      results: [],
-      selected: [...search.selected, item]
-    })
+    if (search.selected.length < 5){
+      console.log('Selected: ', item)
+      dispatch({
+        type: 'MAKE_SELECTION',
+        searchType: search.searchType,
+        input: '',
+        results: [],
+        selected: search.selected.find(selection => selection.name === item.name) ? [...search.selected] : [...search.selected, item]
+      })
+    }
   }
 
   return (
