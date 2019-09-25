@@ -4,7 +4,6 @@ import Spotify from 'spotify-web-api-js'
 
 import ResultDropdown from './ResultDropdown'
 import { SearchContext } from '../contexts/SearchContext'
-import SelectedItem from './SelectedItem'
 import SelectionContainer from './SelectionContainer'
 
 const spotifyApi = new Spotify()

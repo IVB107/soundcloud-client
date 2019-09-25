@@ -17,7 +17,9 @@ SearchBar.jsx:
 [x] Add dynamic dropdown showing returned search result options
 [x] Add functionality to toggle between 'Artist' & 'Track' search
 [x] Add onSubmit handler to create new <SearchResult />
-[] Add default image for artists/tracks without one
+[x] Limit search to 5 items
+[x] Add default image for artists/tracks without one
+[] Add 'click-off' event handler to exit dropdown results
 
 SearchResult.jsx:
 [x] Fix dropdown to lay on top of Tracklist instead of pushing all elements down on page

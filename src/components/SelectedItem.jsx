@@ -22,7 +22,10 @@ const SelectedItem = ({ item }) => {
     <Container>
       <ImageContainer>
         {/* TODO: Add default image for Artists/Tracks without one */}
-        <img src={item.images[0].url} alt={item.name}/>
+        {search.searchType[0] === 'artist'
+          ? <img src={item.images.length > 0 ? item.images[0].url : 'https://image.flaticon.com/icons/png/128/122/122320.png'} alt={item.name} />
+          : <img src={item.album.images.length > 0 ? item.album.images[0].url : 'https://image.flaticon.com/icons/png/128/122/122320.png'} alt={item.name} />
+        }
       </ImageContainer>
       <p>{item.name}</p>
       <button onClick={handleRemoveItem}>X</button>
