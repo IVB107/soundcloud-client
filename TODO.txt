@@ -1,0 +1,37 @@
+TODO Items:
+
+General:
+[] Prevent double-selection of Artists/Tracks
+
+
+----- Components -----
+
+Filter.jsx:
+
+Nav.jsx:
+[] Provide 'logout' url for Log Out nav button
+
+Player.jsx:
+
+SearchBar.jsx:
+[x] Add dynamic dropdown showing returned search result options
+[x] Add functionality to toggle between 'Artist' & 'Track' search
+[x] Add onSubmit handler to create new <SearchResult />
+[x] Limit search to 5 items
+[x] Add default image for artists/tracks without one
+[] Custom default image for artists/tracks --> app logo?
+
+SearchResult.jsx:
+[x] Fix dropdown to lay on top of Tracklist instead of pushing all elements down on page
+[] Add 'click-off' event handler to exit dropdown results
+
+Track.jsx:
+
+TrackList.jsx:
+
+
+----- Reducers -----
+
+
+----- Contexts -----
+

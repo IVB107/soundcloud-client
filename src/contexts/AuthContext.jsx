@@ -4,9 +4,11 @@ import { authReducer } from '../reducers/authReducer'
 export const AuthContext = createContext()
 
 const AuthContextProvider = (props) => {
+  // Set initial authentication state
   const [auth, dispatch] = useReducer(authReducer, {
     isAuthenticated: false,
-    username: null
+    username: null,
+    user: null
   })
   return (
     <AuthContext.Provider value={{auth, dispatch}}>
@@ -14,6 +16,5 @@ const AuthContextProvider = (props) => {
     </AuthContext.Provider>
   )
 }
-
 
 export default AuthContextProvider

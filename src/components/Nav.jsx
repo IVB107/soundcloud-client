@@ -1,9 +1,8 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useEffect, useContext } from 'react'
 import Styled from 'styled-components'
 import Spotify from 'spotify-web-api-js'
 
-// import { AuthContext } from '../contexts/AuthContext'
-import { authReducer } from '../reducers/authReducer'
+import { AuthContext } from '../contexts/AuthContext'
 
 const spotifyApi = new Spotify()
 // getHashParams() taken from /server/authorization_code/public/index.html
@@ -18,22 +17,22 @@ const getHashParams = () => {
 }
 
 const Nav = () => {
-  const [auth, dispatch] = useReducer(authReducer, {
-    isAuthenticated: false,
-    username: null,
-    user: null
-  })
+  const { auth, dispatch } = useContext(AuthContext)
 
   const getUser = async () => {
-    await spotifyApi.getMe().then((response) => {
-      console.log('getUser() Response: ', response)
-      dispatch({
-        type: 'LOG_IN',
-        isAuthenticated: true, 
-        username: response.display_name,
-        user: response
+    await spotifyApi.getMe()
+      .then((response) => {
+        console.log('getUser() Response: ', response)
+        dispatch({
+          type: 'LOG_IN',
+          isAuthenticated: true, 
+          username: response.display_name,
+          user: response
+        })
       })
-    })
+      .catch(err => {
+        console.log('ERROR: ', err)
+      })
   }
   
   useEffect(() => {
@@ -59,7 +58,14 @@ const Nav = () => {
           </div>
         </UserInfo>
       }
-      <NavRight><a href="http://localhost:8888"><button>Connect with Spotify</button></a></NavRight>
+      <NavRight>
+        {auth.isAuthenticated ? (
+          // ----- MISSING 'LOGOUT' LINK -----
+          <a href="http://localhost:8888"><button>Log Out</button></a>
+        ) : (
+          <a href="http://localhost:8888"><button>Connect with Spotify</button></a>
+        )}
+      </NavRight>
     </NavContainer>
   )
 }
@@ -82,6 +88,7 @@ const NavContainer = Styled.div`
     align-items: center;
   }
 `
+
 const NavLeft = Styled.div`
   justify-content: flex-start;
 
@@ -89,9 +96,11 @@ const NavLeft = Styled.div`
     padding: 0 20px;
     font-weight: 900;
     font-size: 2rem;
-    color: #ead441;
+    /* color: #ead441; */
+    color: #e4f489;
   }
 `
+
 const NavRight = Styled.div`
   justify-content: flex-end;
 

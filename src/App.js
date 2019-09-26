@@ -2,11 +2,12 @@ import React from 'react'
 import Styled from 'styled-components'
 
 import Nav from './components/Nav'
-import Search from './components/Search'
+import SearchBar from './components/SearchBar'
 import Player from './components/Player'
 import Filter from './components/Filter'
 import TrackList from './components/TrackList'
 import AuthContextProvider from './contexts/AuthContext'
+import SearchContextProvider from './contexts/SearchContext'
 
 const App = () => {
 
@@ -15,12 +16,14 @@ const App = () => {
       <AppContainer>
         <Nav />
         <h1>Discover new music, instantly.</h1>
-        <Search />
-        <ResultsContainer >
-          <TrackList />
-          <Filter />
-        </ResultsContainer>
+        <SearchContextProvider >
+          <SearchBar />
+          <ResultsContainer >
+            <TrackList />
+            <Filter />
+          </ResultsContainer>
           <Player />
+        </SearchContextProvider>
       </AppContainer>
     </AuthContextProvider>
   );
