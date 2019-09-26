@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
+import Spotify from 'spotify-web-api-js'
 import uuid from 'uuid'
 
 import { SearchContext } from '../contexts/SearchContext'
@@ -7,6 +8,30 @@ import SelectedItem from './SelectedItem'
 
 const SelectionContainer = () => {
   const { search, dispatch } = useContext(SearchContext)
+  const spotifyApi = new Spotify()
+
+  const getRecommendations = async () => {
+    // Create new context for selected artists/tracks?
+    if (search.selected.length > 0){
+      // Get recommendations
+      await spotifyApi.getRecommendations({
+        seed_artists: search.selected.map(selection => selection.id)
+      })
+      .then(response => {
+        console.log('Recommendations: ', response)
+        // dispatch({
+
+        // })
+      })
+      .catch(err => {
+        console.log('ERROR: ', err)
+      })
+    }
+  }
+
+  useEffect(() => {
+    getRecommendations()
+  }, [search.selected])
 
   return (
     <Container>

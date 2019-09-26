@@ -11,9 +11,7 @@ const SelectedItem = ({ item }) => {
     console.log('Removing selected item...')
     dispatch({
       type: 'REMOVE_SELECTION',
-      searchType: search.searchType,
-      input: search.input,
-      results: search.results,
+      ...search,
       selected: search.selected.filter(selection => selection.name !== item.name)
     })
   }
@@ -21,7 +19,7 @@ const SelectedItem = ({ item }) => {
   return (
     <Container>
       <ImageContainer>
-        {/* TODO: Add default image for Artists/Tracks without one */}
+        {/* Check if API provides an image URL */}
         {search.searchType[0] === 'artist'
           ? <img src={item.images.length > 0 ? item.images[0].url : 'https://image.flaticon.com/icons/png/128/122/122320.png'} alt={item.name} />
           : <img src={item.album.images.length > 0 ? item.album.images[0].url : 'https://image.flaticon.com/icons/png/128/122/122320.png'} alt={item.name} />

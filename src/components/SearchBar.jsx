@@ -13,28 +13,27 @@ const SearchBar = () => {
   
   const inputSearch = async (input) => {
     // Pass search string to state to update input value first
-    dispatch({
-      type: 'ON_CHANGE',
-      searchType: search.searchType,
-      input: input,
-      results: [],
-      selected: search.selected
-    })
     if (input !== ''){
       await spotifyApi.search(input, search.searchType)
         .then(response => {
           console.log('Input Search Results: ', response)
           dispatch({
             type: 'ON_CHANGE',
-            searchType: search.searchType,
+            ...search,
             input, 
-            results: search.searchType[0] === 'artist' ? response.artists.items.splice(0, 5) : response.tracks.items.splice(0, 5),
-            selected: search.selected
+            results: search.searchType[0] === 'artist' ? response.artists.items.splice(0, 5) : response.tracks.items.splice(0, 5)
           })
         })
         .catch(err => {
           console.log('ERROR: ', err)
         })
+    } else {
+      // input string is empty
+      dispatch({
+        type: 'ON_CHANGE',
+        ...search,
+        input
+      })
     }
   }
 
@@ -43,13 +42,15 @@ const SearchBar = () => {
       console.log('switching search type...')
       dispatch({
         type: 'SWITCH_TYPE',
-        searchType: [type],
-        input: '',
-        results: [],
-        selected: []
+        ...search,
+        searchType: [type]
       })
     }
   }
+
+  useEffect(() => {
+    console.log('SEARCH OBJECT: ', search)
+  }, [search])
 
   useEffect(() => {
     // console.log('RESULTS: ', search.results)

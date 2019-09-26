@@ -11,8 +11,8 @@ const ResultDropdown = () => {
     if (search.selected.length < 5){
       console.log('Selected: ', item)
       dispatch({
-        type: 'MAKE_SELECTION',
-        searchType: search.searchType,
+        type: 'ADD_SELECTION',
+        ...search,
         input: '',
         results: [],
         selected: search.selected.find(selection => selection.name === item.name) ? [...search.selected] : [...search.selected, item]

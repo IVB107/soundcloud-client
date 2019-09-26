@@ -2,30 +2,25 @@ export const searchReducer = (state, action) => {
   switch(action.type) {
     case 'ON_CHANGE':
       return {
-        searchType: action.searchType,
+        ...state,
         input: action.input,
-        results: action.results,
-        selected: action.selected
+        results: action.results
       }
     case 'SWITCH_TYPE':
       return {
-        searchType: action.searchType,
-        input: action.input,
-        results: action.results,
-        selected: action.selected
+        ...state,
+        searchType: action.searchType
       }
-    case 'MAKE_SELECTION':
+    case 'ADD_SELECTION':
       return {
-        searchType: action.searchType,
+        ...state,
         input: action.input,
         results: action.results,
         selected: action.selected
       }
     case 'REMOVE_SELECTION':
       return {
-        searchType: action.searchType,
-        input: action.input,
-        results: action.results,
+        ...state,
         selected: action.selected
       }
     default:

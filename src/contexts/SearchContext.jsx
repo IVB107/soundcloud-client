@@ -9,7 +9,9 @@ const SearchContextProvider = (props) => {
     searchType: ['artist'],
     input: '',
     results: [],
-    selected: []
+    selected: [],
+    options: {},
+    suggested_tracks: []
   })
   return (
     <SearchContext.Provider value={{search, dispatch}}>
