@@ -23,6 +23,16 @@ export const searchReducer = (state, action) => {
         ...state,
         selected: action.selected
       }
+    case 'UPDATE_OPTIONS':
+      return {
+        ...state,
+        options: action.options
+      }
+    case 'UPDATE_SUGGESTED_TRACKS':
+      return {
+        ...state,
+        suggested_tracks: action.suggested_tracks
+      }
     default:
       return state
   }

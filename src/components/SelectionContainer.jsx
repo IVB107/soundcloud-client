@@ -11,17 +11,19 @@ const SelectionContainer = () => {
   const spotifyApi = new Spotify()
 
   const getRecommendations = async () => {
-    // Create new context for selected artists/tracks?
     if (search.selected.length > 0){
-      // Get recommendations
+      // Get recommended tracks
       await spotifyApi.getRecommendations({
         seed_artists: search.selected.map(selection => selection.id)
       })
       .then(response => {
         console.log('Recommendations: ', response)
-        // dispatch({
-
-        // })
+        dispatch({
+          type: 'UPDATE_SUGGESTED_TRACKS',
+          ...search,
+          options: search.options,
+          suggested_tracks: response.tracks
+        })
       })
       .catch(err => {
         console.log('ERROR: ', err)
