@@ -54,7 +54,9 @@ const TrackDetails = Styled.div`
 
   img {
     height: 60px;
+    min-height: 60px;
     width: 60px;
+    min-width: 60px;
     border-radius: 4px;
   }
 `

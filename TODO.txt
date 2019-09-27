@@ -5,6 +5,7 @@ General:
 [] Handle Warning: "Line 36:  React Hook useEffect has a missing dependency: 'getRecommendations'. Either include it or remove the dependency array  react-hooks/exhaustive-deps"
 
 
+
 ----- Components -----
 
 Filter.jsx:
@@ -29,7 +30,7 @@ SearchResult.jsx:
 Track.jsx:
 
 TrackList.jsx:
-
+[] Conditionally render Tracklist component if a track or artist is selected
 
 ----- Reducers -----
 
