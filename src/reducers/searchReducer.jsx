@@ -9,7 +9,9 @@ export const searchReducer = (state, action) => {
     case 'SWITCH_TYPE':
       return {
         ...state,
-        searchType: action.searchType
+        searchType: action.searchType,
+        selected: action.selected,
+        suggested_tracks: action.suggested_tracks
       }
     case 'ADD_SELECTION':
       return {

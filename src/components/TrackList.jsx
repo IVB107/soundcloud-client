@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Styled from 'styled-components'
 
+import { SearchContext } from '../contexts/SearchContext'
+import Track from './Track'
+
 const TrackList = () => {
+  const { search, dispatch } = useContext(SearchContext)
+
   return (
     <TrackListContainer>
       <ListHeader>
@@ -21,6 +26,12 @@ const TrackList = () => {
       </ListHeader>
       <Tracks>
         {/* Map over returned tracks array and render <Track /> component for each */}
+        {search.suggested_tracks.map(track => (
+          <Track 
+            key={track.id}
+            track={track} 
+          />
+        ))}
       </Tracks>
     </TrackListContainer>
   )
@@ -85,4 +96,7 @@ const Tracks = Styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 100%;
+  max-height: 360px;
+  overflow: scroll;
 `

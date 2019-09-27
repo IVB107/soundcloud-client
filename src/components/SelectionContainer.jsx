@@ -9,7 +9,7 @@ import SelectedItem from './SelectedItem'
 const SelectionContainer = () => {
   const { search, dispatch } = useContext(SearchContext)
   const spotifyApi = new Spotify()
-
+  
   const getRecommendations = async () => {
     if (search.selected.length > 0){
       // Get recommended tracks

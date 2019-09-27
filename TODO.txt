@@ -1,7 +1,8 @@
 TODO Items:
 
 General:
-[] Prevent double-selection of Artists/Tracks
+[x] Prevent double-selection of Artists/Tracks
+[] Handle Warning: "Line 36:  React Hook useEffect has a missing dependency: 'getRecommendations'. Either include it or remove the dependency array  react-hooks/exhaustive-deps"
 
 
 ----- Components -----
