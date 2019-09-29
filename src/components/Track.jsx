@@ -13,7 +13,10 @@ const Track = ({ track }) => {
   return (
     <TrackContainer>
       <TrackDetails>
-        <img id="img" src={track.album.images[0].url} alt={track.name}/>
+        <AlbumArt alt={track.name} id="artwork" style={{backgroundImage: `URL(${track.album.images[0].url})`}}>
+          {/* Play button to appear on :hover over album artwork */}
+          {/* <img src="" alt=""/> */}
+        </AlbumArt>
         <Titles>
           <TrackName>
             <p id="track">{track.name}</p>
@@ -48,7 +51,7 @@ const TrackContainer = Styled.div`
     background-color: rgba(234, 241, 247, .3);
     transition: .2s ease;
   }
-  :hover #img {
+  :hover #artwork {
     transition: .2s ease;
     transform: scale(1.2, 1.2);
   }
@@ -62,15 +65,19 @@ const TrackDetails = Styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+`
 
-  img {
-    height: 60px;
-    min-height: 60px;
-    width: 60px;
-    min-width: 60px;
-    border-radius: 4px;
-    transition: .2s ease;
-  }
+const AlbumArt = Styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  min-height: 60px;
+  width: 60px;
+  min-width: 60px;
+  border-radius: 4px;
+  transition: .2s ease;
+  background-size: contain;
 `
 
 const Titles = Styled.div`

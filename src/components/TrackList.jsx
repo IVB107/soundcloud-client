@@ -46,7 +46,7 @@ const TrackListContainer = Styled.div`
   align-items: flex-start;
   width: 100%;
   max-width: 70vw;
-  margin: 0 20px;
+  margin: 0 20px 20px;
   align-self: flex-start;
 `
 
