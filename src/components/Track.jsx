@@ -13,22 +13,22 @@ const Track = ({ track }) => {
   return (
     <TrackContainer>
       <TrackDetails>
-        <img src={track.album.images[0].url} alt={track.name}/>
+        <img id="img" src={track.album.images[0].url} alt={track.name}/>
         <Titles>
           <TrackName>
-            <p>{track.name}</p>
+            <p id="track">{track.name}</p>
             {track.explicit === true 
               ? <Explicit>EXPLICIT</Explicit>
               : null
             }
           </TrackName>
           <ArtistName>
-            <p>{track.artists[0].name}</p>
+            <p id="artist">{track.artists[0].name}</p>
           </ArtistName>
         </Titles>
       </TrackDetails>
       <TrackLength>
-        <p>{getDuration(track.duration_ms)}</p>
+        <p id="length">{getDuration(track.duration_ms)}</p>
       </TrackLength>
     </TrackContainer>
   )
@@ -40,17 +40,28 @@ const TrackContainer = Styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* border: 1px solid red; */
   width: 100%;
   padding: 4px 0;
+  transition: .2s ease;
+
+  :hover {
+    background-color: rgba(234, 241, 247, .3);
+    transition: .2s ease;
+  }
+  :hover #img {
+    transition: .2s ease;
+    transform: scale(1.2, 1.2);
+  }
+  :hover #track, :hover #artist, :hover #length {
+    /* color: #12262d; */
+    /* transition: .2s ease; */
+  }
 `
 
 const TrackDetails = Styled.div`
   display: flex;
-  /* flex-direction: column; */
   justify-content: flex-start;
   align-items: center;
-  /* border: 1px solid yellow; */
 
   img {
     height: 60px;
@@ -58,6 +69,7 @@ const TrackDetails = Styled.div`
     width: 60px;
     min-width: 60px;
     border-radius: 4px;
+    transition: .2s ease;
   }
 `
 
@@ -66,7 +78,6 @@ const Titles = Styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-
 `
 
 const TrackName = Styled.div`
@@ -79,6 +90,7 @@ const TrackName = Styled.div`
   p {
     margin: 0 0 0 20px;
     font-weight: 600;
+    color: #eaf1f7;
   }
 `
 
@@ -90,7 +102,7 @@ const ArtistName = Styled.div`
   p {
     margin: 0 0 0 20px;
     font-size: .8rem;
-    /* font-weight: 600; */
+    color: #eaf1f7;
   }
 `
 
@@ -101,6 +113,8 @@ const TrackLength = Styled.div`
 
   p {
     font-size: .9rem;
+    color: #eaf1f7;
+    margin: 0 10px;
   }
 `
 

@@ -31,6 +31,7 @@ Track.jsx:
 
 TrackList.jsx:
 [] Conditionally render Tracklist component if a track or artist is selected
+[] Decide whether to have scrollable, fixed container height -OR- let window height expand with rendered tracks with options and player widget sticking to top on scrolldown (like Dubolt, probably better for mobile view)
 
 ----- Reducers -----
 

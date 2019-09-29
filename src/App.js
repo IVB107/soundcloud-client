@@ -37,7 +37,8 @@ const AppContainer = Styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   background-image: linear-gradient(-30deg, #12262d, #4baa67);
   background-attachment: fixed;
 

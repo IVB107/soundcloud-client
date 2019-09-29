@@ -97,6 +97,6 @@ const Tracks = Styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  max-height: 360px;
-  overflow: scroll;
+  /* max-height: 360px; */
+  /* overflow: scroll; */
 `
