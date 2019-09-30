@@ -1,21 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
 
 import { SearchContext } from '../contexts/SearchContext'
 
 const Player = () => {
   const { search, dispatch } = useContext(SearchContext)
+  const current = search.current_track
+
+  useEffect(() => {
+    console.log('CURRENT TRACK: ', current)
+  }, [search.current_track])
 
   return (
     <>
-      {search.selected.length > 0 &&
+      {current.album &&
         <PlayerContainer>
+          <ArtworkContainer>
+            <img src={current.album.images[0].url} alt={current.name}/>
+          </ArtworkContainer>
           <div>
-            <img src="" alt=""/>
-          </div>
-          <div>
-            <p>Song Name</p>
-            <p>Artist Name</p>
+            <p>{current.name}</p>
+            <p>{current.artists[0].name}</p>
           </div>
           <PlayerControls>
             <p>Playback Device</p>
@@ -35,7 +40,8 @@ const PlayerContainer = Styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  background-color: #e4f489;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -52,5 +58,20 @@ const PlayerControls = Styled.div`
   p {
     margin-left: 6px;
     border: 1px solid white;
+  }
+`
+
+const ArtworkContainer = Styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  
+  img {
+    height: 80px;
+    width: 80px;
+    margin: 0;
+    padding: 0;
   }
 `

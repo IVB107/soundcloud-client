@@ -11,7 +11,8 @@ export const searchReducer = (state, action) => {
         ...state,
         searchType: action.searchType,
         selected: action.selected,
-        suggested_tracks: action.suggested_tracks
+        suggested_tracks: action.suggested_tracks,
+        current_track: {}
       }
     case 'ADD_SELECTION':
       return {
@@ -33,7 +34,8 @@ export const searchReducer = (state, action) => {
     case 'UPDATE_SUGGESTED_TRACKS':
       return {
         ...state,
-        suggested_tracks: action.suggested_tracks
+        suggested_tracks: action.suggested_tracks,
+        current_track: action.current_track
       }
     default:
       return state

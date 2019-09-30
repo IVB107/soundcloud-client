@@ -23,7 +23,8 @@ const SelectionContainer = () => {
             type: 'UPDATE_SUGGESTED_TRACKS',
             ...search,
             options: search.options,
-            suggested_tracks: response.tracks
+            suggested_tracks: response.tracks,
+            current_track: response.tracks[0]
           })
         })
         .catch(err => {
@@ -39,7 +40,8 @@ const SelectionContainer = () => {
             type: 'UPDATE_SUGGESTED_TRACKS',
             ...search,
             options: search.options,
-            suggested_tracks: response.tracks
+            suggested_tracks: response.tracks,
+            current_track: response.tracks[0]
           })
         })
         .catch(err => {
