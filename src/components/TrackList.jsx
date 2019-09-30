@@ -9,30 +9,34 @@ const TrackList = () => {
 
   return (
     <TrackListContainer>
-      <ListHeader>
-        <h2>Tracklist</h2>
-        <div>
-          <p># of tracks</p>
-          <p>45:17</p>
-        </div>
-      </ListHeader>
-      <ListHeader>
-        <p>Sort By:</p>
-        <div>
-          <button>DANCEABILITY</button>
-          <button>ENERGY</button>
-          <button>TEMPO</button>
-        </div>
-      </ListHeader>
-      <Tracks>
-        {/* Map over returned tracks array and render <Track /> component for each */}
-        {search.suggested_tracks.map(track => (
-          <Track 
-            key={track.id}
-            track={track} 
-          />
-        ))}
-      </Tracks>
+      {search.selected.length > 0 &&
+        <>
+          <ListHeader>
+            <h2>Tracklist</h2>
+            <div>
+              <p># of tracks</p>
+              <p>45:17</p>
+            </div>
+          </ListHeader>
+          <ListHeader>
+            <p>Sort By:</p>
+            <div>
+              <button>DANCEABILITY</button>
+              <button>ENERGY</button>
+              <button>TEMPO</button>
+            </div>
+          </ListHeader>
+          <Tracks>
+            {/* Map over returned tracks array and render <Track /> component for each */}
+            {search.suggested_tracks.map(track => (
+              <Track 
+              key={track.id}
+              track={track} 
+              />
+              ))}
+          </Tracks>
+        </>
+      }
     </TrackListContainer>
   )
 }

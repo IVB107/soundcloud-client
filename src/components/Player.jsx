@@ -39,7 +39,7 @@ const PlayerContainer = Styled.div`
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 60px;
+  height: 80px;
   bottom: 0;
 `
 
