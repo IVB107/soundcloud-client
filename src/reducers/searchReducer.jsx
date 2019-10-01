@@ -38,6 +38,11 @@ export const searchReducer = (state, action) => {
         suggested_tracks: action.suggested_tracks,
         current_track: action.current_track
       }
+    case 'UPDATE_CURRENT_TRACK':
+      return {
+        ...state,
+        current_track: action.current_track
+      }
     default:
       return state
   }

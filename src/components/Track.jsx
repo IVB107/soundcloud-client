@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Styled from 'styled-components'
 
+import { SearchContext } from '../contexts/SearchContext'
+
 const Track = ({ track }) => {
+  const { search, dispatch } = useContext(SearchContext)
 
   const getDuration = (length) => {
     let minutes = parseInt(Math.floor((length/1000)/60))
@@ -10,8 +13,17 @@ const Track = ({ track }) => {
     return `${minutes}:${seconds}`
   }
 
+  const chooseTrack = track => {
+    console.log('Switching current track...')
+    dispatch({
+      type: 'UPDATE_CURRENT_TRACK',
+      ...search,
+      current_track: track
+    })
+  }
+
   return (
-    <TrackContainer>
+    <TrackContainer onClick={() => chooseTrack(track)}>
       <TrackDetails>
         <AlbumArt alt={track.name} id="artwork" style={{backgroundImage: `URL(${track.album.images[0].url})`}}>
           {/* Play button to appear on :hover over album artwork */}
@@ -50,6 +62,7 @@ const TrackContainer = Styled.div`
   :hover {
     background-color: rgba(234, 241, 247, .3);
     transition: .2s ease;
+    cursor: pointer;
   }
   :hover #artwork {
     transition: .2s ease;
