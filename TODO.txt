@@ -3,6 +3,8 @@ TODO Items:
 General:
 [x] Prevent double-selection of Artists/Tracks
 [] Handle Warning: "Line 36:  React Hook useEffect has a missing dependency: 'getRecommendations'. Either include it or remove the dependency array  react-hooks/exhaustive-deps"
+[] Save application data in localstorage, keep current session on browser refresh
+[] Check out PassportJS and 'passport-spotify' strategy to improve login/authentication flow
 
 
 
@@ -26,6 +28,7 @@ SearchBar.jsx:
 SearchResult.jsx:
 [x] Fix dropdown to lay on top of Tracklist instead of pushing all elements down on page
 [] Add 'click-off' event handler to exit dropdown results
+[] Fix bug when toggling searchType (artist/track) with an existing input string
 
 Track.jsx:
 

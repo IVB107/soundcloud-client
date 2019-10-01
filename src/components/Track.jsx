@@ -26,7 +26,7 @@ const Track = ({ track }) => {
             }
           </TrackName>
           <ArtistName>
-            <p id="artist">{track.artists[0].name}</p>
+            <p id="artist">{track.artists.map(artist => artist.name).join(', ')}</p>
           </ArtistName>
         </Titles>
       </TrackDetails>

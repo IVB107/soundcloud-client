@@ -1,26 +1,39 @@
 import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
+import Spotify from 'spotify-web-api-js'
 
 import { SearchContext } from '../contexts/SearchContext'
 
 const Player = () => {
   const { search, dispatch } = useContext(SearchContext)
-  const current = search.current_track
+  const spotifyApi = new Spotify()
+  const current = search.current_track 
+
+  // const getPlaybackState = async () => {
+  //   await spotifyApi.getMyCurrentPlaybackState()
+  //     .then(response => {
+  //       console.log('Playback State Object: ', response)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  // }
 
   useEffect(() => {
-    console.log('CURRENT TRACK: ', current)
+    // console.log('CURRENT TRACK: ', current)
+    // getPlaybackState()
   }, [search.current_track])
 
   return (
     <>
-      {current.album &&
+      {(current.hasOwnProperty('album') && search.selected.length > 0) &&
         <PlayerContainer>
           <ArtworkContainer>
             <img src={current.album.images[0].url} alt={current.name}/>
           </ArtworkContainer>
           <div>
             <p>{current.name}</p>
-            <p>{current.artists[0].name}</p>
+            <p>{current.artists.map(artist => artist.name).join(', ')}</p>
           </div>
           <PlayerControls>
             <p>Playback Device</p>

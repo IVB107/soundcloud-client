@@ -19,6 +19,16 @@ const getHashParams = () => {
 const Nav = () => {
   const { auth, dispatch } = useContext(AuthContext)
 
+  const getPlaybackState = async () => {
+    await spotifyApi.getMyCurrentPlaybackState()
+      .then(response => {
+        console.log('Playback State Object: ', response)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   const getUser = async () => {
     await spotifyApi.getMe()
       .then((response) => {
@@ -43,6 +53,10 @@ const Nav = () => {
     }
     console.log('AUTH: ', auth)
   })
+
+  useEffect(() => {
+    if (auth.isAuthenticated) getPlaybackState()
+  }, [auth.isAuthenticated])
 
   return (
     <NavContainer>
