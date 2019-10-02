@@ -12,11 +12,11 @@ const SelectionContainer = () => {
   
   const getRecommendations = async () => {
     if (search.selected.length > 0){
-      // Get recommended tracks
-      if (search.searchType[0] === 'artist'){ // search by artist (default)
-        await spotifyApi.getRecommendations({
-          seed_artists: search.selected.map(selection => selection.id)
-        })
+      await spotifyApi.getRecommendations(
+        search.searchType[0] === 'artist'
+          ? {seed_artists: search.selected.map(selection => selection.id)} // search by artist (default)
+          : {seed_tracks: search.selected.map(selection => selection.id)} // search by track
+        )
         .then(response => {
           console.log('Recommendations: ', response)
           dispatch({
@@ -30,24 +30,14 @@ const SelectionContainer = () => {
         .catch(err => {
           console.log('ERROR: ', err)
         })
-      } else { // Search by track
-        await spotifyApi.getRecommendations({
-          seed_tracks: search.selected.map(selection => selection.id)
+      } else {
+        dispatch({
+          type: 'UPDATE_SUGGESTED_TRACKS',
+          ...search,
+          options: search.options,
+          suggested_tracks: [],
+          current_track: {}
         })
-        .then(response => {
-          console.log('Recommendations: ', response)
-          dispatch({
-            type: 'UPDATE_SUGGESTED_TRACKS',
-            ...search,
-            options: search.options,
-            suggested_tracks: response.tracks,
-            current_track: response.tracks[0]
-          })
-        })
-        .catch(err => {
-          console.log('ERROR: ', err)
-        })
-      }
     }
   }
 
