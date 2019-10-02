@@ -25,7 +25,13 @@ const Track = ({ track }) => {
   return (
     <TrackContainer onClick={() => chooseTrack(track)}>
       <TrackDetails>
-        <AlbumArt alt={track.name} id="artwork" style={{backgroundImage: `URL(${track.album.images[0].url})`}}>
+        <AlbumArt 
+          alt={track.name} 
+          id="artwork" 
+          style={{backgroundImage: `URL(${track.album.images.length > 0 
+            ? track.album.images[0].url 
+            : `https://image.flaticon.com/icons/png/128/122/122320.png`})`}}
+        >
           {/* Play button to appear on :hover over album artwork */}
           {/* <img src="" alt=""/> */}
         </AlbumArt>
