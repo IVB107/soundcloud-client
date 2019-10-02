@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
-import Spotify from 'spotify-web-api-js'
+// import Spotify from 'spotify-web-api-js'
 
 import { SearchContext } from '../contexts/SearchContext'
 
 const Player = () => {
   const { search, dispatch } = useContext(SearchContext)
-  const spotifyApi = new Spotify()
+  // const spotifyApi = new Spotify()
   const current = search.current_track 
 
   // const getPlaybackState = async () => {
@@ -20,7 +20,6 @@ const Player = () => {
   // }
 
   useEffect(() => {
-    console.log('CURRENT TRACK: ', current)
     // getPlaybackState()
   }, [search.current_track])
 

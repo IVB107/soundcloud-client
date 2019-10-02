@@ -45,7 +45,7 @@ const AppContainer = Styled.div`
 
   h1 {
     align-self: flex-start;
-    margin: 3rem 0 0;
+    margin: 1rem 0 0;
     padding: 0 20px;
     font-size: 2rem;
     color: #eaf1f7;

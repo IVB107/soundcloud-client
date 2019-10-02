@@ -7,6 +7,17 @@ import Track from './Track'
 const TrackList = () => {
   const { search, dispatch } = useContext(SearchContext)
 
+  const getPlaylistDuration = () => {
+    let duration = search.suggested_tracks.map(track => track.duration_ms).reduce((acc, cur) => acc += cur)
+    let hours = parseInt(Math.floor((duration/1000)/3600)),
+        minutes = parseInt(Math.floor((duration/1000)/60)%60),
+        seconds = parseInt(Math.floor((duration/1000)%60))
+
+    if (hours > 0 && minutes < 10) minutes = '0' + minutes
+    if (seconds < 10) seconds = '0' + seconds
+    return hours > 0 ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`
+  }
+
   return (
     <TrackListContainer>
       {(search.selected.length > 0 && search.suggested_tracks.length > 0) &&
@@ -14,8 +25,8 @@ const TrackList = () => {
           <ListHeader>
             <h2>Tracklist</h2>
             <div>
-              <p># of tracks</p>
-              <p>45:17</p>
+              <p>{`${search.suggested_tracks.length} Tracks`}</p>
+              <p>{`${getPlaylistDuration()}`}</p>
             </div>
           </ListHeader>
           <ListHeader>

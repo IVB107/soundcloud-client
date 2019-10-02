@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
 import Spotify from 'spotify-web-api-js'
-import uuid from 'uuid'
 
 import { SearchContext } from '../contexts/SearchContext'
 import SelectedItem from './SelectedItem'
@@ -49,7 +48,7 @@ const SelectionContainer = () => {
     <Container>
       {search.selected.map(item => (
         <SelectedItem 
-          key={uuid()}
+          key={item.id}
           item={item}
         />
       ))}
