@@ -92,6 +92,7 @@ const NavContainer = Styled.div`
   height: 3.5rem;
   border-bottom: 2px solid black;
   justify-content: space-between;
+  /* background-color: #12262d; */
 
   div {
     /* width: 50%; */

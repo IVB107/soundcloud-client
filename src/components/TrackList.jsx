@@ -9,7 +9,7 @@ const TrackList = () => {
 
   return (
     <TrackListContainer>
-      {search.selected.length > 0 &&
+      {(search.selected.length > 0 && search.suggested_tracks.length > 0) &&
         <>
           <ListHeader>
             <h2>Tracklist</h2>
@@ -36,6 +36,11 @@ const TrackList = () => {
               ))}
           </Tracks>
         </>
+      }
+      {(search.selected.length > 0 && search.suggested_tracks.length < 1) &&
+        <EmptyList>
+          <p>{`No suggested tracks for this ${search.searchType[0]}`}</p>
+        </EmptyList>
       }
     </TrackListContainer>
   )
@@ -103,4 +108,16 @@ const Tracks = Styled.div`
   width: 100%;
   /* max-height: 360px; */
   /* overflow: scroll; */
+`
+
+const EmptyList = Styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  p {
+    color: #eaf1f7;
+    font-weight: 500;
+  }
 `

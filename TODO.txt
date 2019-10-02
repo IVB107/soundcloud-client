@@ -5,6 +5,7 @@ General:
 [] Handle Warning: "Line 36:  React Hook useEffect has a missing dependency: 'getRecommendations'. Either include it or remove the dependency array  react-hooks/exhaustive-deps"
 [] Save application data in localstorage, keep current session on browser refresh
 [] Check out PassportJS and 'passport-spotify' strategy to improve login/authentication flow
+[] Consolidate Styled Components to single file, import as necessary
 
 
 
@@ -35,6 +36,7 @@ Track.jsx:
 TrackList.jsx:
 [] Dynamically display/update total TrackList length & duration
 [x] Conditionally render Tracklist component if a track or artist is selected
+[] Render message to UI when an artist/track has no suggested tracks
 
 
 ----- Reducers -----

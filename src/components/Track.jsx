@@ -57,6 +57,7 @@ const TrackContainer = Styled.div`
   justify-content: space-between;
   width: 100%;
   padding: 4px 0;
+  margin: 4px 0;
   transition: .2s ease;
 
   :hover {
@@ -67,6 +68,7 @@ const TrackContainer = Styled.div`
   :hover #artwork {
     transition: .2s ease;
     transform: scale(1.2, 1.2);
+    box-shadow: 0px 2px 10px rgb(40, 40, 40);
   }
   :hover #track, :hover #artist, :hover #length {
     /* color: #12262d; */
@@ -91,6 +93,7 @@ const AlbumArt = Styled.div`
   border-radius: 4px;
   transition: .2s ease;
   background-size: contain;
+  box-shadow: 0px 2px 4px rgb(40, 40, 40);
 `
 
 const Titles = Styled.div`
