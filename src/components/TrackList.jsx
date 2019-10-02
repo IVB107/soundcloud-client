@@ -1,11 +1,39 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
+import Spotify from 'spotify-web-api-js'
 
 import { SearchContext } from '../contexts/SearchContext'
 import Track from './Track'
 
 const TrackList = () => {
   const { search, dispatch } = useContext(SearchContext)
+  const spotifyApi = new Spotify()
+
+  const getAudioFeatures = async () => {
+    console.log('Fetching playlist track features...')
+    let ids = search.suggested_tracks.map(track => track.id).join(',')
+    await spotifyApi.getAudioFeaturesForTracks(ids)
+      .then(response => {
+        console.log('Playlist track features: ', response)
+        let suggested = [...search.suggested_tracks]
+        response.audio_features.forEach(track => {
+          suggested[response.audio_features.indexOf(track)].danceability = track.danceability
+          suggested[response.audio_features.indexOf(track)].energy = track.energy
+          suggested[response.audio_features.indexOf(track)].tempo = track.tempo
+        })
+        console.log('SUGGESTED + FEATURES: ', suggested)
+        dispatch({
+          type: 'UPDATE_SUGGESTED_TRACKS',
+          ...search,
+          options: search.options,
+          suggested_tracks: suggested,
+          current_track: suggested[0]
+        })
+      })
+      .catch(err => {
+        console.log('ERROR: ', err)
+      })
+  }
 
   const getPlaylistDuration = () => {
     let duration = search.suggested_tracks.map(track => track.duration_ms).reduce((acc, cur) => acc += cur)
@@ -17,6 +45,23 @@ const TrackList = () => {
     if (seconds < 10) seconds = '0' + seconds
     return hours > 0 ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`
   }
+
+  const sortBy = type => {
+    let sorted = [...search.suggested_tracks.sort((a, b) => a[type] > b[type])]
+    dispatch({
+      type: 'UPDATE_SUGGESTED_TRACKS',
+      ...search,
+      options: search.options,
+      suggested_tracks: sorted,
+      current_track: sorted[0]
+    })
+  }
+
+  useEffect(() => {
+    if (search.suggested_tracks.length > 0) {
+      if (!search.suggested_tracks[0].hasOwnProperty('energy')) getAudioFeatures()
+    }
+  }, [search.current_track])
 
   return (
     <TrackListContainer>
@@ -32,9 +77,9 @@ const TrackList = () => {
           <ListHeader>
             <p>Sort By:</p>
             <div>
-              <button>DANCEABILITY</button>
-              <button>ENERGY</button>
-              <button>TEMPO</button>
+              <button onClick={() => sortBy('danceability')}>DANCEABILITY</button>
+              <button onClick={() => sortBy('energy')}>ENERGY</button>
+              <button onClick={() => sortBy('tempo')}>TEMPO</button>
             </div>
           </ListHeader>
           <Tracks>
