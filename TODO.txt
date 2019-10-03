@@ -1,7 +1,12 @@
 TODO Items:
 
 General:
-[] Prevent double-selection of Artists/Tracks
+[x] Prevent double-selection of Artists/Tracks
+[] Handle Warning: "Line 36:  React Hook useEffect has a missing dependency: 'getRecommendations'. Either include it or remove the dependency array  react-hooks/exhaustive-deps"
+[] Find out how to keep current session on browser refresh (localstorage?)
+[] Check out PassportJS and 'passport-spotify' strategy to improve login/authentication flow
+[] Consolidate Styled Components to single file, import as necessary
+
 
 
 ----- Components -----
@@ -24,10 +29,21 @@ SearchBar.jsx:
 SearchResult.jsx:
 [x] Fix dropdown to lay on top of Tracklist instead of pushing all elements down on page
 [] Add 'click-off' event handler to exit dropdown results
+[] Fix bug when toggling searchType (artist/track) with an existing input string
+[] Prevent refresh of suggested tracks on duplicate search item (pick the same artist/track twice)
+
+SelectedItem:
+[] Add styling to images so they cover their div
+[] Truncate artist/track name length to fit container
 
 Track.jsx:
+[x] Load placeholder image for tracks without artwork
 
 TrackList.jsx:
+[x] Dynamically display/update total TrackList length & duration
+[] Add functionality to sort tracks (Danceability, Energy, Tempo)
+[x] Conditionally render Tracklist component if a track or artist is selected
+[x] Render message to UI when an artist/track has no suggested tracks
 
 
 ----- Reducers -----

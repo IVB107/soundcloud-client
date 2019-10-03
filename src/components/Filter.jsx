@@ -1,18 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Styled from 'styled-components'
 
+import { SearchContext } from '../contexts/SearchContext'
+
 const Filter = () => {
+  const { search, dispatch } = useContext(SearchContext)
+  
   return (
-    <FilterContainer>
-      <Option>
-        <p>Max number of tracks</p>
-        {/* Some input slider goes here */}
-        <div>
-          <p>Low</p>
-          <p>High</p>
-        </div>
-      </Option>
-    </FilterContainer>
+    <>
+      {search.selected.length > 0 &&
+        <FilterContainer>
+          <Option>
+            <p>Max number of tracks</p>
+            {/* Some input slider goes here */}
+            <div>
+            <p>Low</p>
+            <p>High</p>
+            </div>
+          </Option>
+        </FilterContainer>
+      }
+    </>
   )
 }
 

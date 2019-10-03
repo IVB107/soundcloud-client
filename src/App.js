@@ -32,18 +32,20 @@ const App = () => {
 export default App;
 
 const AppContainer = Styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   background-image: linear-gradient(-30deg, #12262d, #4baa67);
   background-attachment: fixed;
 
   h1 {
     align-self: flex-start;
-    margin: 3rem 0 0;
+    margin: 1rem 0 0;
     padding: 0 20px;
     font-size: 2rem;
     color: #eaf1f7;

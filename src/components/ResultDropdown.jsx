@@ -15,6 +15,7 @@ const ResultDropdown = () => {
         ...search,
         input: '',
         results: [],
+        // Prevents double selections
         selected: search.selected.find(selection => selection.name === item.name) ? [...search.selected] : [...search.selected, item]
       })
     }

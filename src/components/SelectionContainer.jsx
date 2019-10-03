@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
 import Spotify from 'spotify-web-api-js'
-import uuid from 'uuid'
 
 import { SearchContext } from '../contexts/SearchContext'
 import SelectedItem from './SelectedItem'
@@ -9,25 +8,35 @@ import SelectedItem from './SelectedItem'
 const SelectionContainer = () => {
   const { search, dispatch } = useContext(SearchContext)
   const spotifyApi = new Spotify()
-
+  
   const getRecommendations = async () => {
     if (search.selected.length > 0){
-      // Get recommended tracks
-      await spotifyApi.getRecommendations({
-        seed_artists: search.selected.map(selection => selection.id)
-      })
-      .then(response => {
-        console.log('Recommendations: ', response)
+      await spotifyApi.getRecommendations(
+        search.searchType[0] === 'artist'
+          ? {seed_artists: search.selected.map(selection => selection.id)} // search by artist (default)
+          : {seed_tracks: search.selected.map(selection => selection.id)} // search by track
+        )
+        .then(response => {
+          console.log('Recommendations: ', response)
+          dispatch({
+            type: 'UPDATE_SUGGESTED_TRACKS',
+            ...search,
+            options: search.options,
+            suggested_tracks: response.tracks,
+            current_track: response.tracks[0]
+          })
+        })
+        .catch(err => {
+          console.log('ERROR: ', err)
+        })
+      } else {
         dispatch({
           type: 'UPDATE_SUGGESTED_TRACKS',
           ...search,
           options: search.options,
-          suggested_tracks: response.tracks
+          suggested_tracks: [],
+          current_track: {}
         })
-      })
-      .catch(err => {
-        console.log('ERROR: ', err)
-      })
     }
   }
 
@@ -39,7 +48,7 @@ const SelectionContainer = () => {
     <Container>
       {search.selected.map(item => (
         <SelectedItem 
-          key={uuid()}
+          key={item.id}
           item={item}
         />
       ))}

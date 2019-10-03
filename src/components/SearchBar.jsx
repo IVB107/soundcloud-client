@@ -43,7 +43,10 @@ const SearchBar = () => {
       dispatch({
         type: 'SWITCH_TYPE',
         ...search,
-        searchType: [type]
+        input: '',
+        searchType: [type],
+        selected: [],
+        suggested_tracks: []
       })
     }
   }
