@@ -5,6 +5,15 @@ import Spotify from 'spotify-web-api-js'
 import { SearchContext } from '../contexts/SearchContext'
 import Track from './Track'
 
+const selected = {
+  border: '1px solid #e4f489',
+  background: 'none',
+  color: '#e4f489',
+  margin: '0 0 0 10px',
+  padding: '4px 6px',
+  cursor: 'pointer'
+}
+
 const TrackList = () => {
   const { search, dispatch } = useContext(SearchContext)
   const spotifyApi = new Spotify()
@@ -53,7 +62,8 @@ const TrackList = () => {
       ...search,
       options: search.options,
       suggested_tracks: sorted,
-      current_track: sorted[0]
+      current_track: sorted[0],
+      sort_by: type
     })
   }
 
@@ -77,9 +87,15 @@ const TrackList = () => {
           <ListHeader>
             <p>Sort By:</p>
             <div>
-              <button onClick={() => sortBy('danceability')}>DANCEABILITY</button>
-              <button onClick={() => sortBy('energy')}>ENERGY</button>
-              <button onClick={() => sortBy('tempo')}>TEMPO</button>
+              <button 
+                style={search.sort_by === 'danceability' ? selected : null}
+                onClick={() => sortBy('danceability')}>DANCEABILITY</button>
+              <button 
+                style={search.sort_by === 'energy' ? selected : null}
+                onClick={() => sortBy('energy')}>ENERGY</button>
+              <button 
+                style={search.sort_by === 'tempo' ? selected : null}
+                onClick={() => sortBy('tempo')}>TEMPO</button>
             </div>
           </ListHeader>
           <Tracks>
@@ -146,9 +162,9 @@ const ListHeader = Styled.div`
     }
 
     button {
-      border: 1px solid white;
+      border: 1px solid #eaf1f7;
       background: none;
-      color: white;
+      color: #eaf1f7;
       margin: 0 0 0 10px;
       padding: 4px 6px;
       cursor: pointer;

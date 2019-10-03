@@ -34,6 +34,7 @@ SearchResult.jsx:
 
 SelectedItem:
 [] Add styling to images so they cover their div
+[] Truncate artist/track name length to fit container
 
 Track.jsx:
 [x] Load placeholder image for tracks without artwork

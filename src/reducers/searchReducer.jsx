@@ -13,19 +13,22 @@ export const searchReducer = (state, action) => {
         searchType: action.searchType,
         selected: action.selected,
         suggested_tracks: action.suggested_tracks,
-        current_track: {}
+        current_track: {},
+        sort_by: ''
       }
     case 'ADD_SELECTION':
       return {
         ...state,
         input: action.input,
         results: action.results,
-        selected: action.selected
+        selected: action.selected,
+        sort_by: ''
       }
     case 'REMOVE_SELECTION':
       return {
         ...state,
-        selected: action.selected
+        selected: action.selected,
+        sort_by: ''
       }
     case 'UPDATE_OPTIONS':
       return {
@@ -37,7 +40,8 @@ export const searchReducer = (state, action) => {
         ...state,
         options: action.options,
         suggested_tracks: action.suggested_tracks,
-        current_track: action.current_track
+        current_track: action.current_track,
+        sort_by: action.sort_by
       }
     case 'UPDATE_CURRENT_TRACK':
       return {

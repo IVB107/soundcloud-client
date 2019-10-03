@@ -12,7 +12,8 @@ const SearchContextProvider = (props) => {
     selected: [],
     options: {},
     suggested_tracks: [],
-    current_track: {}
+    current_track: {},
+    sort_by: ''
   })
   return (
     <SearchContext.Provider value={{search, dispatch}}>
