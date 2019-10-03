@@ -61,18 +61,18 @@ const Nav = () => {
   return (
     <NavContainer>
       <NavLeft><p>AudioPilot</p></NavLeft>
-      {auth.username !== null && 
-        <UserInfo>
-          <div>
-            <img src={auth.user.images[0].url} alt={auth.user.display_name}/>
-          </div>
-          <div>
-            <p>User: {auth.username}</p>
-            <p>Followers: {auth.user.followers.total}</p>
-          </div>
-        </UserInfo>
-      }
       <NavRight>
+        {auth.username !== null && 
+          <UserInfo>
+            <div>
+              <img src={auth.user.images[0].url} alt={auth.user.display_name}/>
+            </div>
+            <div>
+              <p>User: {auth.username}</p>
+              <p>Followers: {auth.user.followers.total}</p>
+            </div>
+          </UserInfo>
+        }
         {auth.isAuthenticated ? (
           // ----- MISSING 'LOGOUT' LINK -----
           <a href="http://localhost:8888"><button>Log Out</button></a>
@@ -92,10 +92,8 @@ const NavContainer = Styled.div`
   height: 3.5rem;
   border-bottom: 2px solid black;
   justify-content: space-between;
-  /* background-color: #12262d; */
 
   div {
-    /* width: 50%; */
     height: 100%;
     margin: 0;
     padding: 0;
@@ -111,7 +109,6 @@ const NavLeft = Styled.div`
     padding: 0 20px;
     font-weight: 900;
     font-size: 2rem;
-    /* color: #ead441; */
     color: #e4f489;
   }
 `
