@@ -11,7 +11,14 @@ const SearchContextProvider = (props) => {
     results: [],
     selected: [],
     options: {
-      test: [0, 100]
+      // max_length: 20,
+      popularity: [0, 100],
+      energy: [0, 100],
+      vocals: [0, 100],
+      tempo: [0, 100],
+      danceability: [0, 100],
+      mood: [0, 100],
+      acoustics: [0, 100]
     },
     suggested_tracks: [],
     current_track: {},

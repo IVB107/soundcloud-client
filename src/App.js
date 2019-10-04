@@ -4,7 +4,7 @@ import Styled from 'styled-components'
 import Nav from './components/Nav'
 import SearchBar from './components/SearchBar'
 import Player from './components/Player'
-import Options from './components/Options'
+import OptionMenu from './components/OptionMenu'
 import TrackList from './components/TrackList'
 import AuthContextProvider from './contexts/AuthContext'
 import SearchContextProvider from './contexts/SearchContext'
@@ -20,7 +20,7 @@ const App = () => {
           <SearchBar />
           <ResultsContainer >
             <TrackList />
-            <Options />
+            <OptionMenu />
           </ResultsContainer>
           <Player />
         </SearchContextProvider>
