@@ -10,7 +10,9 @@ const SearchContextProvider = (props) => {
     input: '',
     results: [],
     selected: [],
-    options: {},
+    options: {
+      test: [0, 100]
+    },
     suggested_tracks: [],
     current_track: {},
     sort_by: ''

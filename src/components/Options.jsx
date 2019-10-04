@@ -1,32 +1,52 @@
 import React, { useContext } from 'react'
 import Styled from 'styled-components'
+import { Slider } from '@material-ui/core'
 
 import { SearchContext } from '../contexts/SearchContext'
 
-const Filter = () => {
+const Options = () => {
   const { search, dispatch } = useContext(SearchContext)
+
+  const handleChange = (event, newValue) => {
+    console.log('Testing the slider...')
+    dispatch({
+      type: 'UPDATE_OPTIONS',
+      ...search,
+      options: {
+        ...search.options,
+        test: newValue
+      }
+    })
+  }
   
   return (
     <>
       {search.selected.length > 0 &&
-        <FilterContainer>
+        <OptionsContainer>
           <Option>
             <p>Max number of tracks</p>
             {/* Some input slider goes here */}
             <div>
-            <p>Low</p>
-            <p>High</p>
+              {/* <p>Low</p>
+              <p>High</p> */}
+              <Slider
+                value={search.options.test}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                // getAriaValueText={valuetext}
+              />
             </div>
           </Option>
-        </FilterContainer>
+        </OptionsContainer>
       }
     </>
   )
 }
 
-export default Filter 
+export default Options 
 
-const FilterContainer = Styled.div`
+const OptionsContainer = Styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
