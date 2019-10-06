@@ -24,7 +24,7 @@ const OptionType = ({ option }) => {
       <Slider
         value={search.options[option]}
         onChange={handleChange}
-        color={'#e4f489'}
+        color='secondary'
         // valueLabelDisplay="auto"
         aria-labelledby="range-slider"
         // getAriaValueText={valuetext}
@@ -42,6 +42,8 @@ const OptionContainer = Styled.div`
   justify-content: flex-start;
   width: 100%;
   margin: 2px 0;
+  padding: 10px 0 0;
+  border-top: 1px solid #eaf1f7;
 
   p {
     margin: 0;

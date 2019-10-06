@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Styled from 'styled-components'
-// import { Slider } from '@material-ui/core'
+import { Select, MenuItem, InputLabel } from '@material-ui/core'
 
 import OptionType from './OptionType'
 import { SearchContext } from '../contexts/SearchContext'
@@ -8,24 +8,45 @@ import { SearchContext } from '../contexts/SearchContext'
 const OptionMenu = () => {
   const { search, dispatch } = useContext(SearchContext)
 
-  // const handleChange = (event, newValue) => {
-  //   console.log('Testing the slider...')
-  //   dispatch({
-  //     type: 'UPDATE_OPTIONS',
-  //     ...search,
-  //     options: {
-  //       ...search.options,
-  //       [test]: newValue
-  //     }
-  //   })
-  // }
+  const handleChange = (event, newValue) => {
+    console.log('Testing the slider...')
+    dispatch({
+      type: 'UPDATE_OPTIONS',
+      ...search,
+      options: {
+        ...search.options,
+        [test]: newValue
+      }
+    })
+  }
   
   return (
     <>
       {search.selected.length > 0 &&
         <OptionsContainer>
+          <InputLabel 
+            htmlFor='playlist-length' 
+            style={{color: `#eaf1f7`, fontSize: `.8rem`, fontWeight: `600`}}
+          >
+            PLAYLIST LENGTH
+          </InputLabel>
+          <Select 
+            onChange={handleChange} 
+            // color='secondary'
+            style={{width: `100%`}} 
+            inputProps={{
+              id: 'playlist-length',
+            }}
+          >
+            <MenuItem value={10}>10</MenuItem>
+            <MenuItem value={20}>20</MenuItem>
+            <MenuItem value={30}>30</MenuItem>
+            <MenuItem value={40}>40</MenuItem>
+            <MenuItem value={50}>50</MenuItem>
+          </Select>
+          {/* <h3>Filter Tracks By:</h3> */}
           {Object.keys(search.options).map(option => (
-            <OptionType option={option} />
+            <OptionType option={option} key={option}/>
           ))}
         </OptionsContainer>
       }
@@ -45,7 +66,16 @@ const OptionsContainer = Styled.div`
   max-width: 25vw;
   margin: 0 20px 0 10px;
   padding: 10px;
+  border-radius: 5px;
   /* border: 2px solid yellow; */
+
+  h3 {
+    width: 100%;
+    margin: 0 0 10px;
+    padding: 2px 0;
+    color: #eaf1f7; 
+    /* border-bottom: 1px solid #eaf1f7; */
+  }
 `
 
 // const Option = Styled.div`
