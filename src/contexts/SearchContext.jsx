@@ -10,8 +10,8 @@ const SearchContextProvider = (props) => {
     input: '',
     results: [],
     selected: [],
+    limit: 20,
     options: {
-      // max_length: 20,
       popularity: [0, 100],
       energy: [0, 100],
       vocals: [0, 100],

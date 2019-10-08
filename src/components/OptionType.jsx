@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
 import { Slider } from '@material-ui/core'
 
@@ -8,6 +8,8 @@ const OptionType = ({ option }) => {
   const { search, dispatch } = useContext(SearchContext)
 
   const handleChange = (event, newValue) => {
+    console.log('Option Change EVENT: ', event)
+    console.log('Option Change NEW VALUE: ', newValue)
     dispatch({
       type: 'UPDATE_OPTIONS',
       ...search,
@@ -18,11 +20,17 @@ const OptionType = ({ option }) => {
     })
   }
 
+  useEffect(() => {
+    // Find a way to call getRecommendations() from SelectionContainer.jsx
+    // Use setTimeout to wait until slider action is complete before making API call
+  }, [search.options])
+
   return (
     <OptionContainer>
       <p>{option.toUpperCase()}</p>
       <Slider
         value={search.options[option]}
+        // onMouseDownCapture={handleChange}
         onChange={handleChange}
         color='secondary'
         // valueLabelDisplay="auto"

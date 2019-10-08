@@ -32,6 +32,7 @@ const OptionMenu = () => {
           </InputLabel>
           <Select 
             onChange={handleChange} 
+            value={search.limit}
             // color='secondary'
             style={{width: `100%`}} 
             inputProps={{
