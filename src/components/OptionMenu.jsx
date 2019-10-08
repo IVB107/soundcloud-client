@@ -31,7 +31,7 @@ const OptionMenu = () => {
             onChange={handleChange} 
             value={search.limit}
             // color='secondary'
-            style={{width: `100%`}} 
+            style={{width: `100%`, color: `#eaf1f7`}} 
             inputProps={{
               id: 'playlist-length',
             }}
@@ -62,7 +62,7 @@ const OptionsContainer = Styled.div`
   background-color: #12262d;
   width: 100%;
   max-width: 25vw;
-  margin: 0 20px 0 10px;
+  margin: 0 20px 90px 10px;
   padding: 10px;
   border-radius: 5px;
   /* border: 2px solid yellow; */

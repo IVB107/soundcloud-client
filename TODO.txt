@@ -45,6 +45,9 @@ TrackList.jsx:
 [x] Conditionally render Tracklist component if a track or artist is selected
 [x] Render message to UI when an artist/track has no suggested tracks
 
+OptionMenu.jsx:
+[x] Get those sliders to work, update recommended tracks
+[] Style it up! For info on overriding M-UI's theme, take a look here: https://www.sipios.com/blog-tech/how-to-use-styled-components-with-material-ui-in-a-react-app
 
 ----- Reducers -----
 
