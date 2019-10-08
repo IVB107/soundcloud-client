@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
 import Spotify from 'spotify-web-api-js'
 
-import { SearchContext } from '../contexts/SearchContext'
+import { SearchContext, initialState } from '../contexts/SearchContext'
 import SelectedItem from './SelectedItem'
 
 const SelectionContainer = () => {
@@ -13,8 +13,8 @@ const SelectionContainer = () => {
     if (search.selected.length > 0){
       await spotifyApi.getRecommendations(
         search.searchType[0] === 'artist'
-          ? {seed_artists: search.selected.map(selection => selection.id)} // search by artist (default)
-          : {seed_tracks: search.selected.map(selection => selection.id)} // search by track
+          ? {seed_artists: search.selected.map(selection => selection.id), limit: search.limit} // search by artist (default)
+          : {seed_tracks: search.selected.map(selection => selection.id), limit: search.limit} // search by track
         )
         .then(response => {
           console.log('Recommendations: ', response)
@@ -32,17 +32,14 @@ const SelectionContainer = () => {
       } else {
         dispatch({
           type: 'UPDATE_SUGGESTED_TRACKS',
-          ...search,
-          // options: search.options,
-          suggested_tracks: [],
-          current_track: {}
+          ...initialState
         })
     }
   }
 
   useEffect(() => {
     getRecommendations()
-  }, [search.selected])
+  }, [search.selected, search.limit])
 
   return (
     <Container>

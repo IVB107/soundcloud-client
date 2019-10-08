@@ -9,14 +9,11 @@ const OptionMenu = () => {
   const { search, dispatch } = useContext(SearchContext)
 
   const handleChange = (event, newValue) => {
-    console.log('Testing the slider...')
+    // console.log('LIMIT: ', newValue.props.value)
     dispatch({
-      type: 'UPDATE_OPTIONS',
+      type: 'UPDATE_SUGGESTED_TRACKS',
       ...search,
-      options: {
-        ...search.options,
-        [test]: newValue
-      }
+      limit: newValue.props.value
     })
   }
   
