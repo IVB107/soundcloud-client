@@ -6,12 +6,11 @@ General:
 [] Find out how to keep current session on browser refresh (localstorage?)
 [] Check out PassportJS and 'passport-spotify' strategy to improve login/authentication flow
 [] Consolidate Styled Components to single file, import as necessary
+[] Add functionality to save returned tracks as playlist to user's Spotify account
 
 
 
 ----- Components -----
-
-Filter.jsx:
 
 Nav.jsx:
 [] Provide 'logout' url for Log Out nav button

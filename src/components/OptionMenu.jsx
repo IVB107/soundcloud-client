@@ -1,12 +1,42 @@
 import React, { useContext } from 'react'
 import Styled from 'styled-components'
+import clsx from 'clsx'
 import { Select, MenuItem, InputLabel } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles';
 
 import OptionType from './OptionType'
 import { SearchContext } from '../contexts/SearchContext'
 
-const OptionMenu = () => {
+const styles = {
+  root: {
+    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: "0px solid rgba(0, 0, 0, 0)",
+    // borderRadius: 3,
+    color: 'white',
+    // height: 48,
+    padding: '0',
+    animationPlayState: "paused",
+
+    "&:before": {
+      borderBottom: "0px solid rgba(0, 0, 0, 0)"
+    },
+    "&:hover:not($disabled):not($focused):not($error):before": {
+      borderBottom: "2px solid #e4f489",
+      animationPlayState: "paused"
+    },
+    "&:after": {
+      borderBottom: "2px solid #e4f489",
+      animationPlayState: "paused"
+    }
+  },
+  icon: {
+    fill: "#e4f489"
+  }
+}
+
+const OptionMenu = props => {
   const { search, dispatch } = useContext(SearchContext)
+  const { classes, className } = props
 
   const handleChange = (event, newValue) => {
     // console.log('LIMIT: ', newValue.props.value)
@@ -28,12 +58,16 @@ const OptionMenu = () => {
             PLAYLIST LENGTH
           </InputLabel>
           <Select 
+            disableUnderline={true}  
+            className={clsx(classes.root)}
             onChange={handleChange} 
             value={search.limit}
             // color='secondary'
             style={{width: `100%`, color: `#eaf1f7`}} 
             inputProps={{
-              id: 'playlist-length',
+              classes: {
+                icon: classes.icon
+              }
             }}
           >
             <MenuItem value={10}>10</MenuItem>
@@ -52,7 +86,8 @@ const OptionMenu = () => {
   )
 }
 
-export default OptionMenu
+// export default OptionMenu
+export default withStyles(styles)(OptionMenu)
 
 const OptionsContainer = Styled.div`
   display: flex;
