@@ -12,7 +12,7 @@ const styles = {
     // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     background: "0px solid rgba(0, 0, 0, 0)",
     // borderRadius: 3,
-    color: 'white',
+    color: '#eaf1f7',
     // height: 48,
     padding: '0',
     animationPlayState: "paused",
@@ -63,7 +63,7 @@ const OptionMenu = props => {
             onChange={handleChange} 
             value={search.limit}
             // color='secondary'
-            style={{width: `100%`, color: `#eaf1f7`}} 
+            style={{width: `100%`, color: `#e4f489`}} 
             inputProps={{
               classes: {
                 icon: classes.icon
@@ -78,7 +78,16 @@ const OptionMenu = props => {
           </Select>
           {/* <h3>Filter Tracks By:</h3> */}
           {Object.keys(search.options).map(option => (
-            <OptionType option={option} key={option}/>
+            <OptionType 
+              className={clsx(classes.slider)}
+              inputProps={{
+                classes: {
+                  slider: classes.slider
+                }
+              }}
+              option={option} 
+              key={option}
+            />
           ))}
         </OptionsContainer>
       }

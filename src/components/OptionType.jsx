@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Spotify from 'spotify-web-api-js'
 import Styled from 'styled-components'
-import { Slider } from '@material-ui/core'
 
 import { SearchContext } from '../contexts/SearchContext'
+import CustomSlider from './CustomSlider'
 
 const OptionType = ({ option }) => {
   const { search, dispatch } = useContext(SearchContext)
@@ -64,14 +64,11 @@ const OptionType = ({ option }) => {
   return (
     <OptionContainer>
       <p>{option.toUpperCase()}</p>
-      <Slider
+      <CustomSlider 
         value={search.options[option]}
         onChangeCommitted={sliderCommitted}
         onChange={handleChange}
         color='secondary'
-        // valueLabelDisplay="auto"
-        aria-labelledby="range-slider"
-        // getAriaValueText={valuetext}
       />
     </OptionContainer>
   )

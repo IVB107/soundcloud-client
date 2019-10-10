@@ -90,7 +90,8 @@ const NavContainer = Styled.div`
   display: flex;
   width: 100%;
   height: 3.5rem;
-  border-bottom: 2px solid black;
+  /* border-bottom: 1px solid #e4f489; */
+  box-shadow: 0 0 8px 2px rgb(40, 40, 40);
   justify-content: space-between;
 
   div {
