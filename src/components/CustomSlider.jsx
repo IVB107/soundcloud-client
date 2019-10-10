@@ -41,10 +41,6 @@ const CustomSlider = ({ value, onChangeCommitted, onChange }) => {
       value={value}
       onChangeCommitted={onChangeCommitted}
       onChange={onChange}
-      // color='secondary'
-      // valueLabelDisplay="auto"
-      // aria-labelledby="range-slider"
-      // getAriaValueText={valuetext}
     />
   )
 }

@@ -8,7 +8,7 @@ import CustomSlider from './CustomSlider'
 const OptionType = ({ option }) => {
   const { search, dispatch } = useContext(SearchContext)
   const spotifyApi = new Spotify()
-  let options = {
+  let apiOptions = {
     min_popularity: search.options.popularity[0],
     max_popularity: search.options.popularity[1],
     min_energy: parseFloat(search.options.energy[0])/100,
@@ -37,11 +37,11 @@ const OptionType = ({ option }) => {
   }
 
   const updateRecommendations = async () => {
-    console.log('OPTIONS OBJECT: ', options)
+    console.log('FILTERS: ', apiOptions)
     await spotifyApi.getRecommendations(
       search.searchType[0] === 'artist'
-        ? {seed_artists: search.selected.map(selection => selection.id), ...options} // search by artist (default)
-        : {seed_tracks: search.selected.map(selection => selection.id), ...options} // search by track
+        ? {seed_artists: search.selected.map(selection => selection.id), ...apiOptions} // search by artist (default)
+        : {seed_tracks: search.selected.map(selection => selection.id), ...apiOptions} // search by track
       )
       .then(response => {
         console.log('Recommendations: ', response)

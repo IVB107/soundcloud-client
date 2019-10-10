@@ -60,8 +60,6 @@ const PlayerContainer = Styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* border: 1px solid red; */
-  /* background-color: #e4f489; */
   background-color: #12262d;
   margin: 0;
   padding: 0;
@@ -80,7 +78,6 @@ const Titles = Styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   flex-grow: 1;
-  /* justify-self: flex-start; */
 `
 
 const TrackName = Styled.div`
@@ -121,7 +118,6 @@ const PlayerControls = Styled.div`
   display: flex;
   align-items: center;
   margin: 0 20px;
-  /* justify-content: flex-end; */
 
   p {
     margin-left: 6px;
