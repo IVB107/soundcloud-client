@@ -76,10 +76,6 @@ const TrackContainer = Styled.div`
     transform: scale(1.2, 1.2);
     box-shadow: 0px 2px 10px rgb(40, 40, 40);
   }
-  :hover #track, :hover #artist, :hover #length {
-    /* color: #12262d; */
-    /* transition: .2s ease; */
-  }
 `
 
 const TrackDetails = Styled.div`

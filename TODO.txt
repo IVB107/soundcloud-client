@@ -6,12 +6,12 @@ General:
 [] Find out how to keep current session on browser refresh (localstorage?)
 [] Check out PassportJS and 'passport-spotify' strategy to improve login/authentication flow
 [] Consolidate Styled Components to single file, import as necessary
+[] Add functionality to save returned tracks as playlist to user's Spotify account
+[] Go through entire application & leave comments where needed
 
 
 
 ----- Components -----
-
-Filter.jsx:
 
 Nav.jsx:
 [] Provide 'logout' url for Log Out nav button
@@ -33,18 +33,22 @@ SearchResult.jsx:
 [] Prevent refresh of suggested tracks on duplicate search item (pick the same artist/track twice)
 
 SelectedItem:
-[] Add styling to images so they cover their div
+[] Add styling to images so horizontal images still cover their div
 [] Truncate artist/track name length to fit container
 
 Track.jsx:
 [x] Load placeholder image for tracks without artwork
 
 TrackList.jsx:
+[x] Add functionality to sort tracks (Danceability, Energy, Tempo)
 [x] Dynamically display/update total TrackList length & duration
-[] Add functionality to sort tracks (Danceability, Energy, Tempo)
 [x] Conditionally render Tracklist component if a track or artist is selected
 [x] Render message to UI when an artist/track has no suggested tracks
+[] Add loading spinner while awaiting tracks
 
+OptionMenu.jsx:
+[x] Get those sliders to work, update recommended tracks
+[] Style it up! For info on overriding M-UI's theme, take a look here: https://www.sipios.com/blog-tech/how-to-use-styled-components-with-material-ui-in-a-react-app
 
 ----- Reducers -----
 
