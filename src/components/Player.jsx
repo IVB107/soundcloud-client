@@ -19,7 +19,18 @@ const Player = () => {
   //     })
   // }
 
+  // const getDevices = async () => {
+  //   await spotifyApi.getMyDevices()
+  //     .then(response => {
+  //       console.log('Available Devices Object: ', response)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  // }
+
   useEffect(() => {
+    // getDevices()
     // getPlaybackState()
   }, [search.current_track])
 
