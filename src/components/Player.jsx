@@ -1,37 +1,37 @@
 import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
-// import Spotify from 'spotify-web-api-js'
+import Spotify from 'spotify-web-api-js'
 
 import { SearchContext } from '../contexts/SearchContext'
 
 const Player = () => {
   const { search, dispatch } = useContext(SearchContext)
-  // const spotifyApi = new Spotify()
+  const spotifyApi = new Spotify()
   const current = search.current_track 
 
-  // const getPlaybackState = async () => {
-  //   await spotifyApi.getMyCurrentPlaybackState()
-  //     .then(response => {
-  //       console.log('Playback State Object: ', response)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
+  const getPlaybackState = async () => {
+    await spotifyApi.getMyCurrentPlaybackState()
+      .then(response => {
+        console.log('PLAYBACK STATE: ', response)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
-  // const getDevices = async () => {
-  //   await spotifyApi.getMyDevices()
-  //     .then(response => {
-  //       console.log('Available Devices Object: ', response)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
+  const getDevices = async () => {
+    await spotifyApi.getMyDevices()
+      .then(response => {
+        console.log('AVAILABLE DEVICES: ', response)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
   useEffect(() => {
-    // getDevices()
-    // getPlaybackState()
+    getDevices()
+    getPlaybackState()
   }, [search.current_track])
 
   return (
