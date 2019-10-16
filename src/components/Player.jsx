@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
-// import Spotify from 'spotify-web-api-js'
+import Spotify from 'spotify-web-api-js'
 
 import { SearchContext } from '../contexts/SearchContext'
+import PlayerControls from './PlayerControls'
 
 const Player = () => {
   const { search, dispatch } = useContext(SearchContext)
-  // const spotifyApi = new Spotify()
+  const spotifyApi = new Spotify()
   const current = search.current_track 
 
   // const getPlaybackState = async () => {
@@ -19,18 +20,18 @@ const Player = () => {
   //     })
   // }
 
-  // const getDevices = async () => {
-  //   await spotifyApi.getMyDevices()
-  //     .then(response => {
-  //       console.log('Available Devices Object: ', response)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
+  const getDevices = async () => {
+    await spotifyApi.getMyDevices()
+      .then(response => {
+        console.log('Available Devices Object: ', response)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
   useEffect(() => {
-    // getDevices()
+    getDevices()
     // getPlaybackState()
   }, [search.current_track])
 
@@ -53,11 +54,7 @@ const Player = () => {
               <p>{current.artists.map(artist => artist.name).join(', ')}</p>
             </ArtistName>
           </Titles>
-          <PlayerControls>
-            <p>Playback Device</p>
-            <p>Play/Pause</p>
-            <p>Next Track</p>
-          </PlayerControls>
+          <PlayerControls />
         </PlayerContainer>
       }
     </>
@@ -121,18 +118,6 @@ const ArtistName = Styled.div`
   p {
     margin: 0 0 0 20px;
     font-size: .8rem;
-    color: #eaf1f7;
-  }
-`
-
-const PlayerControls = Styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0 20px;
-
-  p {
-    margin-left: 6px;
-    border: 1px solid white;
     color: #eaf1f7;
   }
 `

@@ -2,6 +2,7 @@ TODO Items:
 
 General:
 [x] Prevent double-selection of Artists/Tracks
+[] Generate new favicon for browser tab
 [] Handle Warning: "Line 36:  React Hook useEffect has a missing dependency: 'getRecommendations'. Either include it or remove the dependency array  react-hooks/exhaustive-deps"
 [] Find out how to keep current session on browser refresh (localstorage?)
 [] Check out PassportJS and 'passport-spotify' strategy to improve login/authentication flow

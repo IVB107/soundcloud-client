@@ -8,9 +8,9 @@ import OptionMenu from './components/OptionMenu'
 import TrackList from './components/TrackList'
 import AuthContextProvider from './contexts/AuthContext'
 import SearchContextProvider from './contexts/SearchContext'
+import PlaybackContextProvider from './contexts/PlaybackContext'
 
 const App = () => {
-
   return (
     <AuthContextProvider >
       <AppContainer>
@@ -18,11 +18,13 @@ const App = () => {
         <h1>Discover new music, instantly.</h1>
         <SearchContextProvider >
           <SearchBar />
-          <ResultsContainer >
-            <TrackList />
-            <OptionMenu />
-          </ResultsContainer>
-          <Player />
+            <ResultsContainer >
+              <TrackList />
+              <OptionMenu />
+            </ResultsContainer>
+            <PlaybackContextProvider >
+              <Player />
+            </PlaybackContextProvider>
         </SearchContextProvider>
       </AppContainer>
     </AuthContextProvider>
