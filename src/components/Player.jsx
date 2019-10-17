@@ -42,19 +42,27 @@ const Player = () => {
           <ArtworkContainer>
             <img src={current.album.images[0].url} alt={current.name}/>
           </ArtworkContainer>
-          <Titles>
-            <TrackName>
-              <p>{current.name}</p>
-              {current.explicit === true 
-                ? <Explicit>EXPLICIT</Explicit>
-                : null
-              }
-            </TrackName>
-            <ArtistName>
-              <p>{current.artists.map(artist => artist.name).join(', ')}</p>
-            </ArtistName>
-          </Titles>
-          <PlayerControls />
+          <DetailsContainer >
+            <TrackLength >
+              {/* Use in-line style to match 'width' to song's progress */}
+              <TrackProgress />
+            </TrackLength>
+            <Details>
+              <Titles>
+                <TrackName>
+                  <p>{current.name}</p>
+                  {current.explicit === true 
+                    ? <Explicit>EXPLICIT</Explicit>
+                    : null
+                  }
+                </TrackName>
+                <ArtistName>
+                  <p>{current.artists.map(artist => artist.name).join(', ')}</p>
+                </ArtistName>
+              </Titles>
+              <PlayerControls />
+            </Details>
+          </DetailsContainer>
         </PlayerContainer>
       }
     </>
@@ -69,8 +77,6 @@ const PlayerContainer = Styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: #12262d;
-  margin: 0;
-  padding: 0;
   width: 100vw;
   height: 80px;
   bottom: 0;
@@ -78,6 +84,32 @@ const PlayerContainer = Styled.div`
   div p {
     color: #eaf1f7;
   }
+`
+
+const DetailsContainer = Styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`
+
+const Details = Styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+`
+
+const TrackLength = Styled.div`
+  display: flex;
+  width: 100%;
+  height: 2px;
+  background-color: #eaf1f7;
+`
+
+const TrackProgress = Styled.div`
+  height: 100%;
 `
 
 const Titles = Styled.div`
