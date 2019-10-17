@@ -11,8 +11,9 @@ const PlayerControls = () => {
   return (
     <ControlContainer>
       <p>Playback Device</p>
-      <p><i class="fas fa-play"></i></p>
-      <p>Next Track</p>
+      <button><i class="fas fa-fast-backward"></i></button>
+      <Play><i class="fas fa-play"></i></Play>
+      <button><i class="fas fa-fast-forward"></i></button>
     </ControlContainer>
   )
 }
@@ -24,9 +25,31 @@ const ControlContainer = Styled.div`
   align-items: center;
   margin: 0 20px;
 
-  p {
-    margin-left: 6px;
-    border: 1px solid white;
+  button {
+    margin-left: 10px;
     color: #eaf1f7;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: .1s;
+
+    :hover {
+      transform: scale(1.2, 1.2);
+      transition: .1s;
+    }
+
+    i {
+      margin: none;
+      padding: none;
+      transition: .1s;
+    }
   }
+`
+
+const Play = Styled.button`
+  padding: 10px 12px;
+  color: #eaf1f7;
+  border-radius: 50%;
+  background-color: green;
+  border: 2px solid #e4f489 !important;
 `
