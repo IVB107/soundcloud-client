@@ -11,9 +11,9 @@ const PlayerControls = () => {
   return (
     <ControlContainer>
       <p>Playback Device</p>
-      <button><i class="fas fa-fast-backward"></i></button>
-      <Play><i class="fas fa-play"></i></Play>
-      <button><i class="fas fa-fast-forward"></i></button>
+      <button><i className="fas fa-fast-backward"></i></button>
+      <Play><i className="fas fa-play"></i></Play>
+      <button><i className="fas fa-fast-forward"></i></button>
     </ControlContainer>
   )
 }

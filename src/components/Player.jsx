@@ -105,11 +105,15 @@ const TrackLength = Styled.div`
   display: flex;
   width: 100%;
   height: 2px;
-  background-color: #eaf1f7;
+  /* background-color: #e4f489; */
+  background-color: #4baa67;
 `
 
 const TrackProgress = Styled.div`
   height: 100%;
+  width: 34%;
+  /* background-color: #4baa67; */
+  background-color: #e4f489;
 `
 
 const Titles = Styled.div`

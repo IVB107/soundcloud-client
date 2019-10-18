@@ -26,7 +26,7 @@ const SelectedItem = ({ item }) => {
         }
       </ImageContainer>
       <p>{item.name}</p>
-      <button onClick={handleRemoveItem}>X</button>
+      <button onClick={handleRemoveItem}><i className="fas fa-times"></i></button>
     </Container>
   )
 }
@@ -58,6 +58,7 @@ const Container = Styled.div`
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
+    padding: 0 8px 0 0;
   }
 `
 
