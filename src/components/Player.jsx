@@ -20,6 +20,7 @@ const Player = () => {
   //     })
   // }
 
+
   const getDevices = async () => {
     await spotifyApi.getMyDevices()
       .then(response => {
