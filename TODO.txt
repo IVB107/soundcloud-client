@@ -2,13 +2,15 @@ TODO Items:
 
 General:
 [x] Prevent double-selection of Artists/Tracks
+[x] Add Spotify Web Playback SDK for connecting player to a playback device
+[] Connect player to Web Player ('AudioPilot Player') and play songs
 [] Generate new favicon for browser tab
 [] Handle Warning: "Line 36:  React Hook useEffect has a missing dependency: 'getRecommendations'. Either include it or remove the dependency array  react-hooks/exhaustive-deps"
-[] Find out how to keep current session on browser refresh (localstorage?)
+[] Find out how to maintain user's current session on browser refresh (localstorage?)
 [] Check out PassportJS and 'passport-spotify' strategy to improve login/authentication flow
 [] Consolidate Styled Components to single file, import as necessary
 [] Add functionality to save returned tracks as playlist to user's Spotify account
-[] Go through entire application & leave comments where needed
+[] Comb through entire application & leave comments where needed
 
 
 
