@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components'
+import Script from 'react-load-script'
 
 import Nav from './components/Nav'
 import SearchBar from './components/SearchBar'
@@ -11,8 +12,64 @@ import SearchContextProvider from './contexts/SearchContext'
 import PlaybackContextProvider from './contexts/PlaybackContext'
 
 const App = () => {
+
+  const handleLoadSuccess = () => {
+    // this.setState({ scriptLoaded: true });
+    console.log("Script loaded")
+    const token = 'BQCNHZ8g8ctJheiTnJZlFA8TsvVv3BGu1kZwJl_o6Yd9zujXMwwizpsd3v8qTgXFi27gGy4uxVOUSPvoPwTCw_sRAvPoUROWUdGRCmWmwZVi8tzzV3GTSzKYe0jRdiLpDdE9xkKaki-utiPEKYWiDzEihIlj8GdjRWBkk50'
+    const player = new window.Spotify.Player({
+      name: 'AudioPilot Player',
+      getOAuthToken: cb => { cb(token) }
+    })
+    console.log(player)
+    // Error handling
+    player.addListener('initialization_error', ({ message }) => console.log('Error:', message))
+    player.addListener('authentication_error', ({ message }) => console.log('Error:', message))
+    player.addListener('account_error', ({ message }) => console.log('Error:', message))
+    player.addListener('playback_error', ({ message }) => console.log('Error:', message))
+    // Playback status updates
+    player.addListener('player_state_changed', state => console.log(state))
+    // Ready
+    player.addListener('ready', ({ device_id }) => console.log('Ready with Device ID', device_id))
+    // Not Ready
+    player.addListener('not_ready', ({ device_id }) => console.log('Device ID has gone offline', device_id))
+    // Connect to the player!
+    player.connect()
+  }
+
+  const cb = (token) => {
+    return(token);
+  }
+
+  const handleScriptCreate = () => {
+    // this.setState({ scriptLoaded: false });
+    console.log("Script created");
+  }
+
+  const handleScriptError = () => {
+    // this.setState({ scriptError: true });
+    console.log("Script error");
+  }
+
+  const handleScriptLoad = () => {
+    // this.setState({ scriptLoaded: true});
+    console.log("Script loaded");
+  }
+
+  useEffect(() => {
+    window.onSpotifyWebPlaybackSDKReady = () => {
+      handleLoadSuccess()
+    }
+  }, [])
+
   return (
     <AuthContextProvider >
+      <Script 
+        url="https://sdk.scdn.co/spotify-player.js"
+        onCreate={() => handleScriptCreate()}
+        onError={() => handleScriptError()}
+        onLoad={() => handleScriptLoad()}
+      />
       <AppContainer>
         <Nav />
         <h1>Discover new music, instantly.</h1>
