@@ -5,7 +5,7 @@ import { AuthContext } from '../contexts/AuthContext'
 
 const ConnectPlayer = () => {
   const { auth, dispatch } = useContext(AuthContext)
-  const handleLoadSuccess = () => {
+  const handleLoadSuccess = async () => {
     // this.setState({ scriptLoaded: true });
     console.log("Script loaded")
     const token = 'BQCNHZ8g8ctJheiTnJZlFA8TsvVv3BGu1kZwJl_o6Yd9zujXMwwizpsd3v8qTgXFi27gGy4uxVOUSPvoPwTCw_sRAvPoUROWUdGRCmWmwZVi8tzzV3GTSzKYe0jRdiLpDdE9xkKaki-utiPEKYWiDzEihIlj8GdjRWBkk50'
@@ -26,7 +26,18 @@ const ConnectPlayer = () => {
     // Not Ready
     player.addListener('not_ready', ({ device_id }) => console.log('Device ID has gone offline', device_id))
     // Connect to the player!
-    player.connect()
+    await player.connect()
+      .then(res => {
+        dispatch({
+          type: 'WEB_PLAYER_CONNECTED'
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        dispatch({
+          type: 'WEB_PLAYER_DISCONNECTED'
+        })
+      })
   }
 
   const cb = (token) => {
