@@ -3,26 +3,28 @@ import Styled from 'styled-components'
 import Spotify from 'spotify-web-api-js'
 
 import { SearchContext } from '../contexts/SearchContext'
+import PlayerControls from './PlayerControls'
 
 const Player = () => {
   const { search, dispatch } = useContext(SearchContext)
   const spotifyApi = new Spotify()
   const current = search.current_track 
 
-  const getPlaybackState = async () => {
-    await spotifyApi.getMyCurrentPlaybackState()
-      .then(response => {
-        console.log('PLAYBACK STATE: ', response)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+  // const getPlaybackState = async () => {
+  //   await spotifyApi.getMyCurrentPlaybackState()
+  //     .then(response => {
+  //       console.log('Playback State Object: ', response)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  // }
+
 
   const getDevices = async () => {
     await spotifyApi.getMyDevices()
       .then(response => {
-        console.log('AVAILABLE DEVICES: ', response)
+        console.log('Available Devices Object: ', response)
       })
       .catch(err => {
         console.log(err)
@@ -31,7 +33,7 @@ const Player = () => {
 
   useEffect(() => {
     getDevices()
-    getPlaybackState()
+    // getPlaybackState()
   }, [search.current_track])
 
   return (
@@ -41,23 +43,27 @@ const Player = () => {
           <ArtworkContainer>
             <img src={current.album.images[0].url} alt={current.name}/>
           </ArtworkContainer>
-          <Titles>
-            <TrackName>
-              <p>{current.name}</p>
-              {current.explicit === true 
-                ? <Explicit>EXPLICIT</Explicit>
-                : null
-              }
-            </TrackName>
-            <ArtistName>
-              <p>{current.artists.map(artist => artist.name).join(', ')}</p>
-            </ArtistName>
-          </Titles>
-          <PlayerControls>
-            <p>Playback Device</p>
-            <p>Play/Pause</p>
-            <p>Next Track</p>
-          </PlayerControls>
+          <DetailsContainer >
+            <TrackLength >
+              {/* Use in-line style to match 'width' to song's progress */}
+              <TrackProgress />
+            </TrackLength>
+            <Details>
+              <Titles>
+                <TrackName>
+                  <p>{current.name}</p>
+                  {current.explicit === true 
+                    ? <Explicit>EXPLICIT</Explicit>
+                    : null
+                  }
+                </TrackName>
+                <ArtistName>
+                  <p>{current.artists.map(artist => artist.name).join(', ')}</p>
+                </ArtistName>
+              </Titles>
+              <PlayerControls />
+            </Details>
+          </DetailsContainer>
         </PlayerContainer>
       }
     </>
@@ -72,8 +78,6 @@ const PlayerContainer = Styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: #12262d;
-  margin: 0;
-  padding: 0;
   width: 100vw;
   height: 80px;
   bottom: 0;
@@ -81,6 +85,36 @@ const PlayerContainer = Styled.div`
   div p {
     color: #eaf1f7;
   }
+`
+
+const DetailsContainer = Styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`
+
+const Details = Styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+`
+
+const TrackLength = Styled.div`
+  display: flex;
+  width: 100%;
+  height: 2px;
+  /* background-color: #e4f489; */
+  background-color: #4baa67;
+`
+
+const TrackProgress = Styled.div`
+  height: 100%;
+  width: 34%;
+  /* background-color: #4baa67; */
+  background-color: #e4f489;
 `
 
 const Titles = Styled.div`
@@ -121,18 +155,6 @@ const ArtistName = Styled.div`
   p {
     margin: 0 0 0 20px;
     font-size: .8rem;
-    color: #eaf1f7;
-  }
-`
-
-const PlayerControls = Styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0 20px;
-
-  p {
-    margin-left: 6px;
-    border: 1px solid white;
     color: #eaf1f7;
   }
 `

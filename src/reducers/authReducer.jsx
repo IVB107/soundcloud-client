@@ -11,6 +11,16 @@ export const authReducer = (state, action) => {
         isAuthenticated: false,
         username: null
       }
+    case 'WEB_PLAYER_CONNECTED':
+      return {
+        ...state,
+        playerConnected: true
+      }
+    case 'WEB_PLAYER_DISCONNECTED':
+      return {
+        ...state,
+        playerConnected: false
+      }
     default:
       return state
   }

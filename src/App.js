@@ -1,28 +1,33 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Styled from 'styled-components'
+// import Script from 'react-load-script'
 
 import Nav from './components/Nav'
 import SearchBar from './components/SearchBar'
 import Player from './components/Player'
 import OptionMenu from './components/OptionMenu'
 import TrackList from './components/TrackList'
-import AuthContextProvider from './contexts/AuthContext'
+import AuthContextProvider, { AuthContext } from './contexts/AuthContext'
 import SearchContextProvider from './contexts/SearchContext'
+import PlaybackContextProvider from './contexts/PlaybackContext'
+import ConnectPlayer from './components/ConnectPlayer'
 
 const App = () => {
-
   return (
     <AuthContextProvider >
+      <ConnectPlayer />
       <AppContainer>
         <Nav />
         <h1>Discover new music, instantly.</h1>
         <SearchContextProvider >
           <SearchBar />
-          <ResultsContainer >
-            <TrackList />
-            <OptionMenu />
-          </ResultsContainer>
-          <Player />
+            <ResultsContainer >
+              <TrackList />
+              <OptionMenu />
+            </ResultsContainer>
+            <PlaybackContextProvider >
+              <Player />
+            </PlaybackContextProvider>
         </SearchContextProvider>
       </AppContainer>
     </AuthContextProvider>
