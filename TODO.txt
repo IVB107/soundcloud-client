@@ -3,6 +3,7 @@ TODO Items:
 General:
 [x] Prevent double-selection of Artists/Tracks
 [x] Add Spotify Web Playback SDK for connecting player to a playback device
+[x] STORE TOKENS ON SERVER & RETRIEVE FROM THERE
 [] Connect player to Web Player ('AudioPilot Player') and play songs
 [] Generate new favicon for browser tab
 [] Handle Warning: "Line 36:  React Hook useEffect has a missing dependency: 'getRecommendations'. Either include it or remove the dependency array  react-hooks/exhaustive-deps"
