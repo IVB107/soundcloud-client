@@ -10,7 +10,7 @@ const ConnectPlayer = () => {
     console.log("Script loaded")
     // While access token is in URL string, grab it from there
     // NOTE: TOKENS NEED TO BE KEPT SECRET & STORED ON SERVER
-    let token = window.location.toString().split('access_token=')[1].split('&')[0]
+    let token = window.location.toString().split('=')[1].split('&')[0]
     const player = new window.Spotify.Player({
       name: 'AudioPilot Player',
       getOAuthToken: cb => { cb(token) }
