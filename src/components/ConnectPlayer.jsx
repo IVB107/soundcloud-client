@@ -8,7 +8,9 @@ const ConnectPlayer = () => {
   const handleLoadSuccess = async () => {
     // this.setState({ scriptLoaded: true });
     console.log("Script loaded")
-    const token = 'BQCNHZ8g8ctJheiTnJZlFA8TsvVv3BGu1kZwJl_o6Yd9zujXMwwizpsd3v8qTgXFi27gGy4uxVOUSPvoPwTCw_sRAvPoUROWUdGRCmWmwZVi8tzzV3GTSzKYe0jRdiLpDdE9xkKaki-utiPEKYWiDzEihIlj8GdjRWBkk50'
+    // While access token is in URL string, grab it from there
+    // NOTE: TOKENS NEED TO BE KEPT SECRET & STORED ON SERVER
+    let token = window.location.toString().split('access_token=')[1].split('&')[0]
     const player = new window.Spotify.Player({
       name: 'AudioPilot Player',
       getOAuthToken: cb => { cb(token) }
@@ -16,7 +18,12 @@ const ConnectPlayer = () => {
     console.log(player)
     // Error handling
     player.addListener('initialization_error', ({ message }) => console.log('Error:', message))
-    player.addListener('authentication_error', ({ message }) => console.log('Error:', message))
+    player.addListener('authentication_error', ({ message }) => {
+      console.log('Error:', message)
+      dispatch({
+        type: 'WEB_PLAYER_DISCONNECTED'
+      })
+    })
     player.addListener('account_error', ({ message }) => console.log('Error:', message))
     player.addListener('playback_error', ({ message }) => console.log('Error:', message))
     // Playback status updates
